@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:food_delivery_app/counter/counter.dart';
+import 'package:food_delivery_app/app/app.dart';
+import 'package:food_delivery_app/app/router.dart';
 import 'package:food_delivery_app/l10n/l10n.dart';
 
 class App extends StatelessWidget {
@@ -7,16 +8,14 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        appBarTheme: AppBarTheme(
-          backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        ),
-        useMaterial3: true,
-      ),
+    return MaterialApp.router(
+      routerConfig: router,
+      title: 'Food Delivery App',
+      theme: TAppTheme.lightTheme,
+      darkTheme: TAppTheme.darkTheme,
+      themeMode: ThemeMode.system,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
-      home: const CounterPage(),
     );
   }
 }

@@ -1,18 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/utils/utils.dart';
 
-class TTextFormFieldTheme {
-  TTextFormFieldTheme._();
+class CommonTextFormFieldTheme {
+  CommonTextFormFieldTheme._();
 
   static InputDecorationTheme lightInputDecorationTheme = InputDecorationTheme(
     errorMaxLines: 3,
     prefixIconColor: AppColors.darkGrey,
     suffixIconColor: AppColors.darkGrey,
-    // constraints: const BoxConstraints.expand(height: AppSizes.inputFieldHeight),
-    labelStyle: const TextStyle().copyWith(fontSize: AppSizes.fontSizeMd, color: AppColors.black),
-    hintStyle: const TextStyle().copyWith(fontSize: AppSizes.fontSizeSm, color: AppColors.black),
+    // constraints: const BoxConstraints.expand(
+    //   height: AppSizes.inputFieldHeight,
+    // ),
+    labelStyle: const TextStyle().copyWith(
+      fontSize: AppSizes.fontSizeMd,
+      color: AppColors.black,
+    ),
+    hintStyle: const TextStyle().copyWith(
+      fontSize: AppSizes.fontSizeSm,
+      color: AppColors.black,
+    ),
     errorStyle: const TextStyle().copyWith(fontStyle: FontStyle.normal),
-    floatingLabelStyle: const TextStyle().copyWith(color: AppColors.black.withOpacity(0.8)),
+    floatingLabelStyle: const TextStyle().copyWith(
+      color: AppColors.black.withOpacity(
+        0.8,
+      ),
+    ),
     border: const OutlineInputBorder().copyWith(
       borderRadius: BorderRadius.circular(AppSizes.inputFieldRadius),
       borderSide: const BorderSide(color: AppColors.grey),
@@ -39,10 +51,22 @@ class TTextFormFieldTheme {
     errorMaxLines: 2,
     prefixIconColor: AppColors.darkGrey,
     suffixIconColor: AppColors.darkGrey,
-    // constraints: const BoxConstraints.expand(height: AppSizes.inputFieldHeight),
-    labelStyle: const TextStyle().copyWith(fontSize: AppSizes.fontSizeMd, color: AppColors.white),
-    hintStyle: const TextStyle().copyWith(fontSize: AppSizes.fontSizeSm, color: AppColors.white),
-    floatingLabelStyle: const TextStyle().copyWith(color: AppColors.white.withOpacity(0.8)),
+    // constraints: const BoxConstraints.expand(
+    //   height: AppSizes.inputFieldHeight,
+    // ),
+    labelStyle: const TextStyle().copyWith(
+      fontSize: AppSizes.fontSizeMd,
+      color: AppColors.white,
+    ),
+    hintStyle: const TextStyle().copyWith(
+      fontSize: AppSizes.fontSizeSm,
+      color: AppColors.white,
+    ),
+    floatingLabelStyle: const TextStyle().copyWith(
+      color: AppColors.white.withOpacity(
+        0.8,
+      ),
+    ),
     border: const OutlineInputBorder().copyWith(
       borderRadius: BorderRadius.circular(AppSizes.inputFieldRadius),
       borderSide: const BorderSide(color: AppColors.darkGrey),

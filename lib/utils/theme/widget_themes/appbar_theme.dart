@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/utils/utils.dart';
 
-class TAppBarTheme {
-  TAppBarTheme._();
+class CommonAppBarTheme {
+  CommonAppBarTheme._();
 
   static const lightAppBarTheme = AppBarTheme(
     elevation: 0,
@@ -11,8 +11,15 @@ class TAppBarTheme {
     backgroundColor: Colors.transparent,
     surfaceTintColor: Colors.transparent,
     iconTheme: IconThemeData(color: AppColors.black, size: AppSizes.iconMd),
-    actionsIconTheme: IconThemeData(color: AppColors.black, size: AppSizes.iconMd),
-    titleTextStyle: TextStyle(fontSize: 18, fontWeight: FontWeight.w600, color: AppColors.black),
+    actionsIconTheme: IconThemeData(
+      color: AppColors.black,
+      size: AppSizes.iconMd,
+    ),
+    titleTextStyle: TextStyle(
+      fontSize: 18,
+      fontWeight: FontWeight.w600,
+      color: AppColors.black,
+    ),
   );
   static const darkAppBarTheme = AppBarTheme(
     elevation: 0,
@@ -20,8 +27,18 @@ class TAppBarTheme {
     scrolledUnderElevation: 0,
     backgroundColor: Colors.transparent,
     surfaceTintColor: Colors.transparent,
-    iconTheme: IconThemeData(color: AppColors.black, size: AppSizes.iconMd),
-    actionsIconTheme: IconThemeData(color: AppColors.white, size: AppSizes.iconMd),
-    titleTextStyle: TextStyle(fontSize: 18, fontWeight: FontWeight.w600, color: AppColors.white),
+    iconTheme: IconThemeData(
+      color: AppColors.black,
+      size: AppSizes.iconMd,
+    ),
+    actionsIconTheme: IconThemeData(
+      color: AppColors.white,
+      size: AppSizes.iconMd,
+    ),
+    titleTextStyle: TextStyle(
+      fontSize: 18,
+      fontWeight: FontWeight.w600,
+      color: AppColors.white,
+    ),
   );
 }

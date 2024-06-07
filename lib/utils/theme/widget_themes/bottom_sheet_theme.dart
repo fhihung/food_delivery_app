@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/utils/utils.dart';
 
-class TBottomSheetTheme {
-  TBottomSheetTheme._();
+class CommonBottomSheetTheme {
+  CommonBottomSheetTheme._();
 
   static BottomSheetThemeData lightBottomSheetTheme = BottomSheetThemeData(
     showDragHandle: true,

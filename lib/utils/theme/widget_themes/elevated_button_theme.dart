@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-
 import 'package:food_delivery_app/utils/constants/colors.dart';
 import 'package:food_delivery_app/utils/constants/sizes.dart';
 
 /* -- Light & Dark Elevated Button Themes -- */
-class TElevatedButtonTheme {
-  TElevatedButtonTheme._(); //To avoid creating instances
+class CommonElevatedButtonTheme {
+  CommonElevatedButtonTheme._(); //To avoid creating instances
 
   /* -- Light Theme -- */
   static final lightElevatedButtonTheme = ElevatedButtonThemeData(
@@ -17,8 +16,16 @@ class TElevatedButtonTheme {
       disabledBackgroundColor: AppColors.buttonDisabled,
       side: const BorderSide(color: AppColors.primary),
       padding: const EdgeInsets.symmetric(vertical: AppSizes.buttonHeight),
-      textStyle: const TextStyle(fontSize: 16, color: AppColors.textWhite, fontWeight: FontWeight.w600),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(AppSizes.buttonRadius)),
+      textStyle: const TextStyle(
+        fontSize: 16,
+        color: AppColors.textWhite,
+        fontWeight: FontWeight.w600,
+      ),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(
+          AppSizes.buttonRadius,
+        ),
+      ),
     ),
   );
 
@@ -32,8 +39,16 @@ class TElevatedButtonTheme {
       disabledBackgroundColor: AppColors.darkerGrey,
       side: const BorderSide(color: AppColors.primary),
       padding: const EdgeInsets.symmetric(vertical: AppSizes.buttonHeight),
-      textStyle: const TextStyle(fontSize: 16, color: AppColors.textWhite, fontWeight: FontWeight.w600),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(AppSizes.buttonRadius)),
+      textStyle: const TextStyle(
+        fontSize: 16,
+        color: AppColors.textWhite,
+        fontWeight: FontWeight.w600,
+      ),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(
+          AppSizes.buttonRadius,
+        ),
+      ),
     ),
   );
 }

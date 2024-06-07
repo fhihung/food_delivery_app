@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-
 import 'package:food_delivery_app/utils/constants/colors.dart';
 import 'package:food_delivery_app/utils/constants/sizes.dart';
 
 /* -- Light & Dark Outlined Button Themes -- */
-class TOutlinedButtonTheme {
-  TOutlinedButtonTheme._(); //To avoid creating instances
+class CommonOutlinedButtonTheme {
+  CommonOutlinedButtonTheme._(); //To avoid creating instances
 
   /* -- Light Theme -- */
   static final lightOutlinedButtonTheme = OutlinedButtonThemeData(
@@ -13,9 +12,20 @@ class TOutlinedButtonTheme {
       elevation: 0,
       foregroundColor: AppColors.dark,
       side: const BorderSide(color: AppColors.borderPrimary),
-      textStyle: const TextStyle(fontSize: 16, color: AppColors.black, fontWeight: FontWeight.w600),
-      padding: const EdgeInsets.symmetric(vertical: AppSizes.buttonHeight, horizontal: 20),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(AppSizes.buttonRadius)),
+      textStyle: const TextStyle(
+        fontSize: 16,
+        color: AppColors.black,
+        fontWeight: FontWeight.w600,
+      ),
+      padding: const EdgeInsets.symmetric(
+        vertical: AppSizes.buttonHeight,
+        horizontal: 20,
+      ),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(
+          AppSizes.buttonRadius,
+        ),
+      ),
     ),
   );
 
@@ -24,9 +34,20 @@ class TOutlinedButtonTheme {
     style: OutlinedButton.styleFrom(
       foregroundColor: AppColors.light,
       side: const BorderSide(color: AppColors.borderPrimary),
-      textStyle: const TextStyle(fontSize: 16, color: AppColors.textWhite, fontWeight: FontWeight.w600),
-      padding: const EdgeInsets.symmetric(vertical: AppSizes.buttonHeight, horizontal: 20),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(AppSizes.buttonRadius)),
+      textStyle: const TextStyle(
+        fontSize: 16,
+        color: AppColors.textWhite,
+        fontWeight: FontWeight.w600,
+      ),
+      padding: const EdgeInsets.symmetric(
+        vertical: AppSizes.buttonHeight,
+        horizontal: 20,
+      ),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(
+          AppSizes.buttonRadius,
+        ),
+      ),
     ),
   );
 }

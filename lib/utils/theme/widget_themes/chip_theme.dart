@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-
 import 'package:food_delivery_app/utils/constants/colors.dart';
 
-class TChipTheme {
-  TChipTheme._();
+class CommonChipTheme {
+  CommonChipTheme._();
 
   static ChipThemeData lightChipTheme = ChipThemeData(
     disabledColor: AppColors.grey.withOpacity(0.4),

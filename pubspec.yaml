@@ -28,7 +28,7 @@ dependencies:
 #  get: ^4.6.5
   get_storage: ^2.1.1
   bloc: ^8.1.3
-  flutter_bloc: ^8.1.5
+  flutter_bloc: ^8.1.6
 
   # Product Specific
   readmore: ^3.0.0

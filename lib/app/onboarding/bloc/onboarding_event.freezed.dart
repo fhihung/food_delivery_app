@@ -257,3 +257,64 @@ class _$NextPageImpl implements _NextPage {
 abstract class _NextPage implements NextPage {
   const factory _NextPage() = _$NextPageImpl;
 }
+
+/// @nodoc
+mixin _$SkipPressed {}
+
+/// @nodoc
+abstract class $SkipPressedCopyWith<$Res> {
+  factory $SkipPressedCopyWith(
+          SkipPressed value, $Res Function(SkipPressed) then) =
+      _$SkipPressedCopyWithImpl<$Res, SkipPressed>;
+}
+
+/// @nodoc
+class _$SkipPressedCopyWithImpl<$Res, $Val extends SkipPressed>
+    implements $SkipPressedCopyWith<$Res> {
+  _$SkipPressedCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$SkipPressedImplCopyWith<$Res> {
+  factory _$$SkipPressedImplCopyWith(
+          _$SkipPressedImpl value, $Res Function(_$SkipPressedImpl) then) =
+      __$$SkipPressedImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$SkipPressedImplCopyWithImpl<$Res>
+    extends _$SkipPressedCopyWithImpl<$Res, _$SkipPressedImpl>
+    implements _$$SkipPressedImplCopyWith<$Res> {
+  __$$SkipPressedImplCopyWithImpl(
+      _$SkipPressedImpl _value, $Res Function(_$SkipPressedImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$SkipPressedImpl implements _SkipPressed {
+  const _$SkipPressedImpl();
+
+  @override
+  String toString() {
+    return 'SkipPressed()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$SkipPressedImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+}
+
+abstract class _SkipPressed implements SkipPressed {
+  const factory _SkipPressed() = _$SkipPressedImpl;
+}

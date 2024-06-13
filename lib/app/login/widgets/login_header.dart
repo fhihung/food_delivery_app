@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/app/app.dart';
 
-class AppHeaderWidget extends StatelessWidget {
-  const AppHeaderWidget({
-    required this.title, super.key,
+class LoginHeader extends StatelessWidget {
+  const LoginHeader({
+    required this.title,
+    super.key,
     this.subTitle,
     this.image,
   });

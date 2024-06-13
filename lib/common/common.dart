@@ -1,3 +1,4 @@
+export '../app/login/widgets/login_header.dart';
 export 'app_bar/common_app_bar.dart';
 export 'layouts/product_grid_layout.dart';
 export 'styles/shadow_styles.dart';
@@ -5,7 +6,6 @@ export 'styles/spacing_styles.dart';
 export 'views/success_view.dart';
 export 'views/verify_email_view.dart';
 export 'widgets/app_divider_widget.dart';
-export 'widgets/app_header_widget.dart';
 export 'widgets/app_social_buttons_widget.dart';
 export 'widgets/brand_title.dart';
 export 'widgets/circular_icon.dart';

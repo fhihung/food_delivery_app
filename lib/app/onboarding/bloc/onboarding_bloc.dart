@@ -19,6 +19,9 @@ class OnBoardingBloc extends Bloc<OnBoardingEvent, OnBoardingState> {
     on<NextPage>(
       _onNextPage,
     );
+    on<SkipPressed>(
+      _onSkipPressed,
+    );
   }
 
   FutureOr<void> _onOnBoardingPageChanged(
@@ -43,5 +46,12 @@ class OnBoardingBloc extends Bloc<OnBoardingEvent, OnBoardingState> {
     } else {
       router.go('/login');
     }
+  }
+
+  FutureOr<void> _onSkipPressed(
+    SkipPressed event,
+    Emitter<OnBoardingState> emit,
+  ) {
+    router.go('/login');
   }
 }

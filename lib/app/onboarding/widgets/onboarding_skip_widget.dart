@@ -6,7 +6,7 @@ class OnBoardingSkip extends StatelessWidget {
     this.onPressed,
     super.key,
   });
-  final Function()? onPressed;
+  final void Function()? onPressed;
 
   @override
   Widget build(BuildContext context) {

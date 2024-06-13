@@ -22,3 +22,8 @@ class OnBoardingPageChanged extends OnBoardingEvent with _$OnBoardingPageChanged
 class NextPage extends OnBoardingEvent with _$NextPage {
   const factory NextPage() = _NextPage;
 }
+
+@freezed
+class SkipPressed extends OnBoardingEvent with _$SkipPressed {
+  const factory SkipPressed() = _SkipPressed;
+}

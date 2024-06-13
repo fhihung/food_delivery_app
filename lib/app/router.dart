@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:food_delivery_app/app/bottom_navigation/common_bottom_navigation.dart';
+import 'package:food_delivery_app/app/forgot_password/screens/forgot_password_screen.dart';
+import 'package:food_delivery_app/app/login/bloc/login_state.dart';
 import 'package:food_delivery_app/app/login/screens/login_screen.dart';
 import 'package:food_delivery_app/app/onboarding/screens/onboarding_screen.dart';
 import 'package:food_delivery_app/app/sign_up/screens/sign_up_screen.dart';
 import 'package:go_router/go_router.dart';
+
+import '../common/views/verify_email_view.dart';
 
 /// The route configuration.
 final GoRouter router = GoRouter(
@@ -27,11 +30,68 @@ final GoRouter router = GoRouter(
             return const SignUpScreen();
           },
         ),
+        // GoRoute(
+        //   path: 'home',
+        //   builder: (BuildContext context, GoRouterState state) {
+        //     return const CommonBottomNavigation();
+        //   },
+        // ),
         GoRoute(
-          path: 'home',
-          builder: (BuildContext context, GoRouterState state) => const CommonBottomNavigation(),
+          path: 'forgot_password',
+          builder: (BuildContext context, GoRouterState state) {
+            return const ForgotPasswordScreen();
+          },
         ),
+        // GoRoute(
+        //   path: 'verify_email',
+        //   builder: (BuildContext context, GoRouterState state) {
+        //     return const VerifyEmailView(title: title, subTitle: subTitle);
+        //   },
+        // ),
       ],
     ),
   ],
 );
+GoRoute onBoardingRouter(LoginState state) {
+  return GoRoute(
+    path: '/',
+    builder: (BuildContext context, GoRouterState state) {
+      return OnBoardingScreen();
+    },
+    routes: <RouteBase>[
+      GoRoute(
+        path: 'login',
+        builder: (BuildContext context, GoRouterState state) {
+          return const LoginScreen();
+        },
+      ),
+      GoRoute(
+        path: 'sign_up',
+        builder: (BuildContext context, GoRouterState state) {
+          return const SignUpScreen();
+        },
+      ),
+      // GoRoute(
+      //   path: 'home',
+      //   builder: (BuildContext context, GoRouterState state) {
+      //     return const CommonBottomNavigation();
+      //   },
+      // ),
+      GoRoute(
+        path: 'forgot_password',
+        builder: (BuildContext context, GoRouterState state) {
+          return const ForgotPasswordScreen();
+        },
+      ),
+      GoRoute(
+        path: 'verify_email/:title/:subTitle',
+        builder: (BuildContext context, GoRouterState state) {
+          return VerifyEmailView(
+            title: state.pathParameters['title']!,
+            subTitle: state.pathParameters['subTitle']!,
+          );
+        },
+      ),
+    ],
+  );
+}

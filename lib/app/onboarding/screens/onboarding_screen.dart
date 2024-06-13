@@ -36,7 +36,6 @@ class OnBoardingScreen extends StatelessWidget {
       create: (context) => OnBoardingBloc(),
       child: Builder(
         builder: (context) {
-          // Obtain the OnBoardingBloc instance
           final bloc = context.read<OnBoardingBloc>();
 
           return BlocBuilder<OnBoardingBloc, OnBoardingState>(
@@ -53,14 +52,13 @@ class OnBoardingScreen extends StatelessWidget {
                       children: listPage,
                     ),
 
-                    // Skip Button
+                    /// Skip Button
                     Positioned(
                       top: TDeviceUtils.getAppBarHeight(),
                       right: AppSizes.defaultSpace,
                       child: OnBoardingSkip(
                         onPressed: () {
-                          // Handle skip action
-                          bloc.add(OnBoardingPageChanged(id: listPage.length - 1));
+                          bloc.add(const SkipPressed());
                         },
                       ),
                     ),

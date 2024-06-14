@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery_app/app/bottom_navigation/common_bottom_navigation.dart';
 import 'package:food_delivery_app/app/forgot_password/screens/forgot_password_screen.dart';
 import 'package:food_delivery_app/app/login/bloc/login_state.dart';
 import 'package:food_delivery_app/app/login/screens/login_screen.dart';
 import 'package:food_delivery_app/app/onboarding/screens/onboarding_screen.dart';
 import 'package:food_delivery_app/app/sign_up/screens/sign_up_screen.dart';
+import 'package:food_delivery_app/common/views/verify_email_view.dart';
 import 'package:go_router/go_router.dart';
-
-import '../common/views/verify_email_view.dart';
 
 /// The route configuration.
 final GoRouter router = GoRouter(
@@ -30,12 +30,12 @@ final GoRouter router = GoRouter(
             return const SignUpScreen();
           },
         ),
-        // GoRoute(
-        //   path: 'home',
-        //   builder: (BuildContext context, GoRouterState state) {
-        //     return const CommonBottomNavigation();
-        //   },
-        // ),
+        GoRoute(
+          path: 'home',
+          builder: (BuildContext context, GoRouterState state) {
+            return const CommonBottomNavigation();
+          },
+        ),
         GoRoute(
           path: 'forgot_password',
           builder: (BuildContext context, GoRouterState state) {
@@ -71,12 +71,12 @@ GoRoute onBoardingRouter(LoginState state) {
           return const SignUpScreen();
         },
       ),
-      // GoRoute(
-      //   path: 'home',
-      //   builder: (BuildContext context, GoRouterState state) {
-      //     return const CommonBottomNavigation();
-      //   },
-      // ),
+      GoRoute(
+        path: 'home',
+        builder: (BuildContext context, GoRouterState state) {
+          return const CommonBottomNavigation();
+        },
+      ),
       GoRoute(
         path: 'forgot_password',
         builder: (BuildContext context, GoRouterState state) {

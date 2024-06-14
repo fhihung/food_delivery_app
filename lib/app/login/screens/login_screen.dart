@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_delivery_app/app/app.dart';
+import 'package:food_delivery_app/app/login/bloc/login_bloc.dart';
 import 'package:food_delivery_app/app/login/widgets/login_form.dart';
-
-import '../bloc/login_bloc.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});

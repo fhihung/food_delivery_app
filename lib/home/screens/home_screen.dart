@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/app/app.dart';
-import 'package:food_delivery_app/app/home/widgets/home_app_bar.dart';
-import 'package:food_delivery_app/app/home/widgets/home_categories.dart';
-import 'package:food_delivery_app/app/home/widgets/promotion_slider.dart';
+import 'package:food_delivery_app/home/widgets/home_app_bar.dart';
+import 'package:food_delivery_app/home/widgets/home_categories.dart';
+import 'package:food_delivery_app/home/widgets/promotion_slider.dart';
 import 'package:iconsax/iconsax.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -10,7 +10,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final dark = THelperFunctions.isDarkMode(context);
+    // final dark = THelperFunctions.isDarkMode(context);
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(

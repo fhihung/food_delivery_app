@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:food_delivery_app/app/bottom_navigation/common_bottom_navigation.dart';
-import 'package:food_delivery_app/app/forgot_password/screens/forgot_password_screen.dart';
-import 'package:food_delivery_app/app/login/bloc/login_state.dart';
-import 'package:food_delivery_app/app/login/screens/login_screen.dart';
-import 'package:food_delivery_app/app/onboarding/screens/onboarding_screen.dart';
-import 'package:food_delivery_app/app/sign_up/screens/sign_up_screen.dart';
+import 'package:food_delivery_app/app/common_bottom_navigation.dart';
 import 'package:food_delivery_app/common/views/verify_email_view.dart';
+import 'package:food_delivery_app/forgot_password/screens/forgot_password_screen.dart';
+import 'package:food_delivery_app/login/bloc/login_state.dart';
+import 'package:food_delivery_app/login/screens/login_screen.dart';
+import 'package:food_delivery_app/onboarding/screens/onboarding_screen.dart';
+import 'package:food_delivery_app/sign_up/screens/sign_up_screen.dart';
 import 'package:go_router/go_router.dart';
 
 /// The route configuration.

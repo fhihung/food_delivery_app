@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/app/app.dart';
 import 'package:food_delivery_app/app/router.dart';
-import 'package:food_delivery_app/app/sign_up/screens/success_screen.dart';
-import 'package:food_delivery_app/app/sign_up/screens/verify_email_screen.dart';
+import 'package:food_delivery_app/sign_up/screens/success_screen.dart';
+import 'package:food_delivery_app/sign_up/screens/verify_email_screen.dart';
 import 'package:iconsax/iconsax.dart';
 
 class SignUpScreen extends StatelessWidget {

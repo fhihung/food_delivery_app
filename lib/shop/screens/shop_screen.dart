@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/app/app.dart';
-import 'package:food_delivery_app/app/shop/widgets/brand_card.dart';
-import 'package:food_delivery_app/app/shop/widgets/category_tab_bar.dart';
 import 'package:food_delivery_app/common/custom_tab_bar.dart';
+import 'package:food_delivery_app/shop/widgets/brand_card.dart';
+import 'package:food_delivery_app/shop/widgets/category_tab_bar.dart';
 import 'package:iconsax/iconsax.dart';
 
 class ShopScreen extends StatelessWidget {

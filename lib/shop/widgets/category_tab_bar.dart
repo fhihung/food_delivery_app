@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/app/app.dart';
-import 'package:food_delivery_app/app/shop/widgets/brand_showcase.dart';
+import 'package:food_delivery_app/shop/widgets/brand_showcase.dart';
 
 class CategoryTabBar extends StatelessWidget {
   const CategoryTabBar({

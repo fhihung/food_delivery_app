@@ -1,9 +1,9 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:food_delivery_app/app/login/bloc/login_event.dart';
-import 'package:food_delivery_app/app/login/bloc/login_state.dart';
 import 'package:food_delivery_app/app/router.dart';
+import 'package:food_delivery_app/login/bloc/login_event.dart';
+import 'package:food_delivery_app/login/bloc/login_state.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
   LoginBloc() : super(const LoginState()) {

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:food_delivery_app/app/app.dart'; // Assuming this contains AppTexts, AppSizes, TImages, TDeviceUtils
-import 'package:food_delivery_app/app/onboarding/bloc/onboarding_bloc.dart';
-import 'package:food_delivery_app/app/onboarding/bloc/onboarding_event.dart';
-import 'package:food_delivery_app/app/onboarding/bloc/onboarding_state.dart';
-import 'package:food_delivery_app/app/onboarding/widgets/circular_button_widget.dart';
-import 'package:food_delivery_app/app/onboarding/widgets/onboarding_page_widget.dart';
-import 'package:food_delivery_app/app/onboarding/widgets/onboarding_skip_widget.dart';
-import 'package:food_delivery_app/app/onboarding/widgets/page_indicator_widget.dart';
+import 'package:food_delivery_app/app/app.dart';
+import 'package:food_delivery_app/onboarding/bloc/onboarding_bloc.dart';
+import 'package:food_delivery_app/onboarding/bloc/onboarding_event.dart';
+import 'package:food_delivery_app/onboarding/bloc/onboarding_state.dart';
+import 'package:food_delivery_app/onboarding/widgets/circular_button_widget.dart';
+import 'package:food_delivery_app/onboarding/widgets/onboarding_page_widget.dart';
+import 'package:food_delivery_app/onboarding/widgets/onboarding_skip_widget.dart';
+import 'package:food_delivery_app/onboarding/widgets/page_indicator_widget.dart'; // Assuming this contains AppTexts, AppSizes, TImages, TDeviceUtils
 
 class OnBoardingScreen extends StatelessWidget {
   OnBoardingScreen({super.key});

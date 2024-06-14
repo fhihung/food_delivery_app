@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/app/app.dart';
-import 'package:food_delivery_app/app/favorite/screens/favorite_screen.dart';
-import 'package:food_delivery_app/app/home/screens/home_screen.dart';
-import 'package:food_delivery_app/app/setting/screens/setting_screen.dart';
-import 'package:food_delivery_app/app/shop/screens/shop_screen.dart';
+import 'package:food_delivery_app/favorite/screens/favorite_screen.dart';
+import 'package:food_delivery_app/home/screens/home_screen.dart';
+import 'package:food_delivery_app/setting/screens/setting_screen.dart';
+import 'package:food_delivery_app/shop/screens/shop_screen.dart';
 import 'package:iconsax/iconsax.dart';
 
 class CommonBottomNavigation extends StatefulWidget {

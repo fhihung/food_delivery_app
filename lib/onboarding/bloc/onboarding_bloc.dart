@@ -2,9 +2,9 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:food_delivery_app/app/onboarding/bloc/onboarding_event.dart';
-import 'package:food_delivery_app/app/onboarding/bloc/onboarding_state.dart';
 import 'package:food_delivery_app/app/router.dart';
+import 'package:food_delivery_app/onboarding/bloc/onboarding_event.dart';
+import 'package:food_delivery_app/onboarding/bloc/onboarding_state.dart';
 
 class OnBoardingBloc extends Bloc<OnBoardingEvent, OnBoardingState> {
   OnBoardingBloc()

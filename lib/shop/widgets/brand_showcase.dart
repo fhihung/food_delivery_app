@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/app/app.dart';
-import 'package:food_delivery_app/app/shop/widgets/brand_card.dart';
+import 'package:food_delivery_app/shop/widgets/brand_card.dart';
 
 class BrandShowcase extends StatelessWidget {
   const BrandShowcase({
-    required this.images, super.key,
+    required this.images,
+    super.key,
   });
   final List<String> images;
 

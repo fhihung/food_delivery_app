@@ -86,7 +86,7 @@ class LoginForm extends StatelessWidget {
                   width: double.infinity,
                   child: ElevatedButton(
                     onPressed: () {
-                      // router.go('sign_up');
+                      router.go('/home');
                     },
                     child: const Text(AppTexts.signIn),
                   ),

@@ -3,7 +3,24 @@ import 'package:food_delivery_app/app/app.dart';
 import 'package:iconsax/iconsax.dart';
 
 class ProductCardVertical extends StatelessWidget {
-  const ProductCardVertical({super.key});
+  const ProductCardVertical({
+    this.image,
+    this.isFavorite = false,
+    this.brand = 'Lotteria',
+    this.discount,
+    this.price = '45.00',
+    this.title = 'Bulgogi Burger',
+    super.key,
+    this.isVerified,
+  });
+
+  final String? price;
+  final String? title;
+  final String? image;
+  final bool? isFavorite;
+  final String? brand;
+  final double? discount;
+  final bool? isVerified;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +48,11 @@ class ProductCardVertical extends StatelessWidget {
                 children: [
                   /// Thumbnail Image
                   RoundedImage(
-                    image: Assets.images.products.nikeShoes.path,
+                    isNetworkImage: true,
+                    placeholderImage: AssetImage(
+                      Assets.images.products.tomiDogfood.path,
+                    ),
+                    imageUrl: image ?? Assets.images.products.tomiDogfood.path,
                     applyImageRadius: true,
                   ),
 
@@ -71,20 +92,20 @@ class ProductCardVertical extends StatelessWidget {
             ),
 
             ///Details
-            const Padding(
-              padding: EdgeInsets.only(left: AppSizes.sm),
+            Padding(
+              padding: const EdgeInsets.only(left: AppSizes.sm),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   ProductTitle(
-                    title: 'Nike Air Max Green',
+                    title: title!,
                     smallSize: true,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: AppSizes.spaceBtwItems / 2,
                   ),
                   VerifiedBrand(
-                    title: 'Nike',
+                    title: brand,
                   ),
                 ],
               ),
@@ -98,8 +119,8 @@ class ProductCardVertical extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const ProductPrice(
-                    price: '45.0',
+                  ProductPrice(
+                    price: price.toString(),
                   ),
                   Container(
                     decoration: const BoxDecoration(

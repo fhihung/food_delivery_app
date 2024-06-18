@@ -4,27 +4,30 @@ import 'package:iconsax/iconsax.dart';
 
 class VerifiedBrand extends StatelessWidget {
   const VerifiedBrand({
-    required this.title, super.key,
+    this.title = '',
+    super.key,
     this.maxLines = 1,
     this.textColor,
     this.iconColor = AppColors.primary,
     this.textAlign = TextAlign.center,
     this.brandTextSize = TextSizes.small,
+    this.isVerified = true,
   });
 
-  final String title;
+  final String? title;
   final int maxLines;
   final Color? textColor;
   final Color? iconColor;
   final TextAlign? textAlign;
   final TextSizes brandTextSize;
+  final bool isVerified;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
         BrandTitle(
-          title: title,
+          title: title!,
           color: textColor,
           maxLines: maxLines,
           textAlign: textAlign,
@@ -33,11 +36,12 @@ class VerifiedBrand extends StatelessWidget {
         const SizedBox(
           width: AppSizes.xs,
         ),
-        const Icon(
-          Iconsax.verify5,
-          size: AppSizes.iconXs,
-          color: AppColors.primary,
-        ),
+        if (isVerified && title!.isNotEmpty)
+          Icon(
+            Iconsax.verify5,
+            size: 16,
+            color: iconColor,
+          ),
       ],
     );
   }

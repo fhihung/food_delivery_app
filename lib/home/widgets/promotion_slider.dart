@@ -33,7 +33,7 @@ class _PromotionSliderState extends State<PromotionSlider> {
           items: widget.banners
               .map(
                 (url) => RoundedImage(
-                  image: url,
+                  imageUrl: url,
                 ),
               )
               .toList(),

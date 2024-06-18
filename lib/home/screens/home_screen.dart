@@ -56,6 +56,9 @@ class HomeScreen extends StatelessWidget {
                       ],
                     ),
                   ),
+                  const SizedBox(
+                    height: AppSizes.spaceBtwSections,
+                  )
                 ],
               ),
             ),
@@ -77,6 +80,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                   const CommonSectionHeading(
                     title: 'Poular Products',
+                    color: AppColors.dark,
                   ),
                   const SizedBox(
                     height: AppSizes.spaceBtwItems,

@@ -14,9 +14,9 @@ class CurvedContainer extends StatelessWidget {
       clipper: CustomCurvedEdges(),
       child: Container(
         color: AppColors.primary,
-        padding: const EdgeInsets.all(0),
+        padding: EdgeInsets.zero,
         child: SizedBox(
-          height: 400,
+          // height: 400,
           child: Stack(
             alignment: Alignment.center,
             children: [

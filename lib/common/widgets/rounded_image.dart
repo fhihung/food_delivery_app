@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/app/app.dart';
+import 'package:iconsax/iconsax.dart';
 
 class RoundedImage extends StatelessWidget {
   const RoundedImage({
-    required this.image, super.key,
+    required this.imageUrl,
+    super.key,
     this.border,
     this.backgroundColor = AppColors.light,
     this.fit = BoxFit.contain,
@@ -14,9 +16,10 @@ class RoundedImage extends StatelessWidget {
     this.borderRadius = AppSizes.md,
     this.height,
     this.width,
+    this.placeholderImage, // Add this parameter for placeholder image
   });
 
-  final String image;
+  final String imageUrl;
   final double? height;
   final double? width;
   final bool applyImageRadius;
@@ -27,26 +30,39 @@ class RoundedImage extends StatelessWidget {
   final bool isNetworkImage;
   final VoidCallback? onTap;
   final double borderRadius;
+  final ImageProvider? placeholderImage; // Placeholder image
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-          width: width,
-          height: height,
-          padding: padding,
-          decoration: BoxDecoration(
-            border: border,
-            borderRadius: BorderRadius.circular(borderRadius),
-          ),
-          child: ClipRRect(
-            borderRadius: applyImageRadius ? BorderRadius.circular(borderRadius) : BorderRadius.zero,
-            child: Image(
-              image: isNetworkImage ? NetworkImage(image) : AssetImage(image) as ImageProvider,
-              fit: fit,
-            ),
-          ),),
+        width: width,
+        height: height,
+        padding: padding,
+        decoration: BoxDecoration(
+          border: border,
+          borderRadius: BorderRadius.circular(borderRadius),
+        ),
+        child: ClipRRect(
+          borderRadius: applyImageRadius ? BorderRadius.circular(borderRadius) : BorderRadius.zero,
+          child: isNetworkImage
+              ? Image.network(
+                  imageUrl,
+                  fit: fit,
+                  errorBuilder: (context, error, stackTrace) {
+                    // Display placeholder if image loading fails
+                    return placeholderImage != null
+                        ? Image(image: placeholderImage!)
+                        : Icon(Iconsax.warning_2, color: AppColors.error);
+                  },
+                )
+              : Image(
+                  image: AssetImage(imageUrl) as ImageProvider,
+                  fit: fit,
+                ),
+        ),
+      ),
     );
   }
 }

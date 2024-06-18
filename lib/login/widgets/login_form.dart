@@ -28,7 +28,7 @@ class LoginForm extends StatelessWidget {
                 TextFormField(
                   decoration: const InputDecoration(
                     prefixIcon: Icon(Iconsax.direct_right),
-                    labelText: AppTexts.email,
+                    labelText: 'Account',
                   ),
                 ),
                 const SizedBox(height: AppSizes.spaceBtwInputFields),

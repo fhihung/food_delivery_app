@@ -3,7 +3,9 @@ import 'package:food_delivery_app/app/app.dart';
 
 class VerticalImageText extends StatelessWidget {
   const VerticalImageText({
-    required this.text, required this.image, super.key,
+    required this.text,
+    required this.image,
+    super.key,
     this.textColor = AppColors.white,
     this.backgroundColor = AppColors.white,
     this.onTap,
@@ -22,9 +24,25 @@ class VerticalImageText extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.only(right: AppSizes.spaceBtwItems),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             CircularImage(
               image: image,
+              backgroundColor: backgroundColor,
+            ),
+            const SizedBox(
+              height: AppSizes.spaceBtwItems / 2,
+            ),
+            SizedBox(
+              // width: 55,
+              child: Text(
+                text,
+                style: Theme.of(context).textTheme.labelMedium!.apply(
+                      color: textColor,
+                    ),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+              ),
             ),
             // Container(
             //   width: 56,
@@ -40,20 +58,6 @@ class VerticalImageText extends StatelessWidget {
             //     ),
             //   ),
             // ),
-            const SizedBox(
-              height: AppSizes.spaceBtwItems / 2,
-            ),
-            SizedBox(
-              width: 55,
-              child: Text(
-                text,
-                style: Theme.of(context).textTheme.labelMedium!.apply(
-                      color: textColor,
-                    ),
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-              ),
-            ),
           ],
         ),
       ),

@@ -3,7 +3,8 @@ import 'package:food_delivery_app/app/app.dart';
 
 class CommonBadge extends StatelessWidget {
   const CommonBadge({
-    required this.quantity, super.key,
+    required this.quantity,
+    super.key,
     this.textStyle,
     this.color,
   });
@@ -23,10 +24,20 @@ class CommonBadge extends StatelessWidget {
           color: color ?? AppColors.black.withOpacity(0.8),
           borderRadius: BorderRadius.circular(100),
         ),
-        child: Text(
-          quantity.toString(),
-          style: Theme.of(context).textTheme.labelLarge!.apply(color: AppColors.white),
-          textAlign: TextAlign.center,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(bottom: 1),
+              child: Text(
+                quantity.toString(),
+                style: Theme.of(context).textTheme.labelLarge!.apply(
+                      color: AppColors.white,
+                    ),
+                textAlign: TextAlign.center,
+              ),
+            ),
+          ],
         ),
       ),
     );

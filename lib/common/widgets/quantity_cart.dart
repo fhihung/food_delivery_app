@@ -4,7 +4,8 @@ import 'package:iconsax/iconsax.dart';
 
 class QuantityCart extends StatelessWidget {
   const QuantityCart({
-    required this.quantity, super.key,
+    required this.quantity,
+    super.key,
     this.color = AppColors.white,
   });
   final int quantity;
@@ -16,7 +17,10 @@ class QuantityCart extends StatelessWidget {
     return Stack(
       children: [
         IconButton(
-          icon: Icon(Iconsax.shopping_bag, color: color ?? (dark ? AppColors.white : AppColors.black)),
+          icon: Icon(
+            Iconsax.shopping_bag,
+            color: color ?? (dark ? AppColors.white : AppColors.black),
+          ),
           onPressed: () {},
         ),
         CommonBadge(

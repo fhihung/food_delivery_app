@@ -51,11 +51,12 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
         final userId = await storageService.getUserId();
         if (userId != null) {
           await productController.addToCart(
+            event.context,
             int.parse(userId),
             event.productId,
             1,
           );
-          await productController.addToCart(event.productId, 1, int.parse(userId));
+          // await productController.addToCart(event.productId,event.context, 1, int.parse(userId));
         }
       }
     } catch (error) {}

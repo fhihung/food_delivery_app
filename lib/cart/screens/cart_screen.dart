@@ -15,7 +15,7 @@ class CartScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     context.read<CartBloc>().add(const CartFetched());
-
+    var subTotal = 0.0;
     final dark = THelperFunctions.isDarkMode(context);
     return BlocBuilder<CartBloc, CartState>(
       builder: (context, state) {
@@ -48,6 +48,7 @@ class CartScreen extends StatelessWidget {
                 double totalPriceEachProduct = 0.0;
                 double price = double.tryParse(cart.product?.price ?? '0.0') ?? 0.0;
                 totalPriceEachProduct += price * (cart.quantity ?? 0);
+                subTotal = totalPriceEachProduct;
                 return Column(
                   children: [
                     CartItem(
@@ -86,7 +87,6 @@ class CartScreen extends StatelessWidget {
                                   ),
                                 );
                               },
-                              isShow: true,
                             ),
                           ],
                         ),
@@ -107,7 +107,9 @@ class CartScreen extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute<void>(
-                    builder: (context) => const CheckOutScreen(),
+                    builder: (context) => CheckOutScreen(
+                      subTotal: totalPrice.toString(),
+                    ),
                   ),
                 );
               },

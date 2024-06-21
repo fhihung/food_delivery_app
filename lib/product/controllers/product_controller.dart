@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:food_delivery_app/models/m_product.dart';
 import 'package:http/http.dart' as http;
 
@@ -24,6 +25,7 @@ class ProductController {
   }
 
   Future<void> addToCart(
+    BuildContext context,
     int userId,
     int productId,
     int quantity,
@@ -51,6 +53,7 @@ class ProductController {
         if (kDebugMode) {
           print('Request was successful');
         }
+        _showDialog(context, 'Success', 'Product added to cart successfully');
       } else {
         if (kDebugMode) {
           print('Failed to update cart. Status code: ${response.statusCode}');
@@ -64,5 +67,25 @@ class ProductController {
       }
       throw Exception('An error occurred: $e');
     }
+  }
+
+  void _showDialog(BuildContext context, String title, String message) {
+    showDialog<void>(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(title),
+          content: Text(message),
+          actions: <Widget>[
+            TextButton(
+              child: Text('OK'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
   }
 }

@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:food_delivery_app/models/m_cart.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'check_out_event.freezed.dart';
@@ -37,7 +36,10 @@ class CheckOutProductQuantityChanged extends CheckOutEvent with _$CheckOutProduc
 @freezed
 class CheckOutPressed extends CheckOutEvent with _$CheckOutPressed {
   const factory CheckOutPressed({
+    required String totalPrice,
+    required String status,
+    required String paymentMethod,
+    required String shippingAddress,
     BuildContext? context,
-    List<MCart>? cartProducts,
   }) = _CheckOutPressed;
 }

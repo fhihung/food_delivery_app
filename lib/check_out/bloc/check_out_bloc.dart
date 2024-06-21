@@ -16,6 +16,9 @@ class CheckOutBloc extends Bloc<CheckOutEvent, CheckOutState> {
     on<CheckOutFetched>(
       _onCheckOutFetched,
     );
+    on<CheckOutPressed>(
+      _onCheckOutPressed,
+    );
   }
 
   final StorageService storageService = StorageService();
@@ -44,6 +47,26 @@ class CheckOutBloc extends Bloc<CheckOutEvent, CheckOutState> {
       if (userId != null) {
         final cart = await checkOutController.fetchCart(int.parse(userId));
         emit(state.copyWith(cartProducts: cart));
+      }
+    }
+  }
+
+  FutureOr<void> _onCheckOutPressed(
+    CheckOutPressed event,
+    Emitter<CheckOutState> emit,
+  ) async {
+    final accessToken = await storageService.getToken();
+    if (accessToken != null) {
+      final userId = await storageService.getUserId();
+      if (userId != null) {
+        await checkOutController.checkOut(
+          event.context!,
+          int.parse(userId),
+          event.totalPrice,
+          event.status,
+          event.paymentMethod,
+          event.shippingAddress,
+        );
       }
     }
   }

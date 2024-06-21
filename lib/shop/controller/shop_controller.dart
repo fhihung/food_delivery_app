@@ -56,7 +56,7 @@ class ShopController {
   }
 
   Future<List<MProduct>> fetchJunkFoods() async {
-    final response = await http.get(Uri.parse('${apiUrl}products_by_category_id/5'));
+    final response = await http.get(Uri.parse('${apiUrl}products_by_category_id/3'));
 
     if (response.statusCode == 200) {
       final body = jsonDecode(response.body) as List<dynamic>;

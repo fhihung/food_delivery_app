@@ -6,13 +6,28 @@ import 'package:food_delivery_app/check_out/bloc/check_out_bloc.dart';
 import 'package:food_delivery_app/check_out/bloc/check_out_event.dart';
 import 'package:food_delivery_app/check_out/bloc/check_out_state.dart';
 
-class CheckOutScreen extends StatelessWidget {
-  const CheckOutScreen({super.key});
+class CheckOutScreen extends StatefulWidget {
+  const CheckOutScreen({required this.subTotal, super.key});
+
+  final String subTotal;
+
+  @override
+  _CheckOutScreenState createState() => _CheckOutScreenState();
+}
+
+class _CheckOutScreenState extends State<CheckOutScreen> {
+  final TextEditingController addressController = TextEditingController();
+  int selectedPaymentMethod = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    context.read<CheckOutBloc>().add(const CheckOutFetched());
+  }
 
   @override
   Widget build(BuildContext context) {
     final dark = THelperFunctions.isDarkMode(context);
-    context.read<CheckOutBloc>().add(const CheckOutFetched());
     return BlocBuilder<CheckOutBloc, CheckOutState>(
       builder: (context, state) {
         return Scaffold(
@@ -23,7 +38,10 @@ class CheckOutScreen extends StatelessWidget {
                 context.read<CheckOutBloc>().add(
                       CheckOutPressed(
                         context: context,
-                        cartProducts: state.cartProducts,
+                        paymentMethod: selectedPaymentMethod.toString(),
+                        totalPrice: (double.tryParse(widget.subTotal)! + 20).toString(),
+                        status: '0',
+                        shippingAddress: addressController.text,
                       ),
                     );
               },
@@ -31,7 +49,7 @@ class CheckOutScreen extends StatelessWidget {
             ),
           ),
           appBar: CommonAppBar(
-            title: Text('Check Out'),
+            title: const Text('Check Out'),
           ),
           body: SingleChildScrollView(
             child: Column(
@@ -51,36 +69,12 @@ class CheckOutScreen extends StatelessWidget {
                       totalPriceEachProduct += price * (cart.quantity ?? 0);
                       return Column(
                         children: [
-                          // BrandTitle(title: cart.product?.brand?.name ?? '', color: AppColors.primary),
                           CartItem(
                             imageUrl: Assets.images.products.promoBanner1.path,
                             brandName: cart.product?.brand?.name ?? '',
                             productName: cart.product?.name ?? '',
                             description: cart.product?.description ?? '',
                           ),
-                          // const SizedBox(
-                          //   height: AppSizes.spaceBtwItems / 3,
-                          // ),
-                          // Row(
-                          //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          //   children: [
-                          //     // Quantity
-                          //     Row(
-                          //       children: [
-                          //         const SizedBox(
-                          //           width: 70,
-                          //         ),
-                          //         // QuantityWithAddRemoveButton(
-                          //         //   isShow: false,
-                          //         //   quantity: cart.quantity ?? 0,
-                          //         // ),
-                          //       ],
-                          //     ),
-                          //     // ProductPrice(
-                          //     //   price: totalPriceEachProduct.toString(),
-                          //     // )
-                          //   ],
-                          // )
                         ],
                       );
                     },
@@ -101,9 +95,8 @@ class CheckOutScreen extends StatelessWidget {
                               'Subtotal',
                               style: Theme.of(context).textTheme.titleMedium,
                             ),
-                            Text(
-                              '2',
-                              style: Theme.of(context).textTheme.bodyMedium,
+                            ProductPrice(
+                              price: widget.subTotal,
                             ),
                           ],
                         ),
@@ -114,12 +107,11 @@ class CheckOutScreen extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              'Delivery',
+                              'Delivery Fee',
                               style: Theme.of(context).textTheme.titleMedium,
                             ),
-                            Text(
-                              '2',
-                              style: Theme.of(context).textTheme.bodyMedium,
+                            const ProductPrice(
+                              price: '20',
                             ),
                           ],
                         ),
@@ -133,16 +125,15 @@ class CheckOutScreen extends StatelessWidget {
                               'Total',
                               style: Theme.of(context).textTheme.titleMedium,
                             ),
-                            Text(
-                              '200',
-                              style: Theme.of(context).textTheme.titleLarge,
+                            ProductPrice(
+                              price: (double.tryParse(widget.subTotal)! + 20).toString(),
                             ),
                           ],
                         ),
                         const SizedBox(
                           height: AppSizes.spaceBtwItems,
                         ),
-                        AppDividerWidget(text: ''),
+                        const AppDividerWidget(text: ''),
                         CommonSectionHeading(
                           showTextButton: false,
                           title: 'Payment Method',
@@ -151,62 +142,34 @@ class CheckOutScreen extends StatelessWidget {
                         const SizedBox(
                           height: AppSizes.spaceBtwItems,
                         ),
-                        Row(
-                          children: [
-                            Image(
-                              image: Assets.icons.paymentMethods.applePay.provider(),
-                              height: 40,
-                              width: 40,
+                        ...['Apple Pay', 'Visa', 'MasterCard', 'PayPal'].map((method) {
+                          return ListTile(
+                            title: Row(
+                              children: [
+                                Text(method),
+                              ],
                             ),
-                            SizedBox(
-                              width: 30,
+                            leading: Radio<int>(
+                              value: method == 'Apple Pay'
+                                  ? 0
+                                  : method == 'Visa'
+                                      ? 1
+                                      : method == 'MasterCard'
+                                          ? 2
+                                          : 3,
+                              groupValue: selectedPaymentMethod,
+                              onChanged: (value) {
+                                setState(() {
+                                  selectedPaymentMethod = value!;
+                                });
+                              },
                             ),
-                            const Text('Pay with Apple Pay'),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            Image(
-                              image: Assets.icons.paymentMethods.visa.provider(),
-                              height: 40,
-                              width: 40,
-                            ),
-                            SizedBox(
-                              width: 30,
-                            ),
-                            const Text('Pay with Visa '),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            Image(
-                              image: Assets.icons.paymentMethods.masterCard.provider(),
-                              height: 40,
-                              width: 40,
-                            ),
-                            SizedBox(
-                              width: 30,
-                            ),
-                            const Text('Pay with  MasterCard'),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            Image(
-                              image: Assets.icons.paymentMethods.paypal.provider(),
-                              height: 40,
-                              width: 40,
-                            ),
-                            SizedBox(
-                              width: 30,
-                            ),
-                            const Text('Pay with  PayPal'),
-                          ],
-                        ),
+                          );
+                        }).toList(),
                         const SizedBox(
                           height: AppSizes.spaceBtwItems,
                         ),
-                        AppDividerWidget(text: ''),
+                        const AppDividerWidget(text: ''),
                         const SizedBox(
                           height: AppSizes.spaceBtwItems,
                         ),
@@ -218,6 +181,13 @@ class CheckOutScreen extends StatelessWidget {
                         const SizedBox(
                           height: AppSizes.spaceBtwItems,
                         ),
+                        TextField(
+                          controller: addressController,
+                          decoration: const InputDecoration(
+                            hintText: 'Enter your address',
+                            border: OutlineInputBorder(),
+                          ),
+                        ),
                       ],
                     ),
                   ),
@@ -225,12 +195,6 @@ class CheckOutScreen extends StatelessWidget {
               ],
             ),
           ),
-          // CartItem(
-          //   imageUrl: Assets.images.products.promoBanner1.path,
-          //   brandName: 'Brand',
-          //   productName: 'Product Name',
-          //   description: 'Description',
-          // ),
         );
       },
     );

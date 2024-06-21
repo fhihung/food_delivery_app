@@ -436,8 +436,11 @@ abstract class _CheckOutProductQuantityChanged
 
 /// @nodoc
 mixin _$CheckOutPressed {
+  String get totalPrice => throw _privateConstructorUsedError;
+  String get status => throw _privateConstructorUsedError;
+  String get paymentMethod => throw _privateConstructorUsedError;
+  String get shippingAddress => throw _privateConstructorUsedError;
   BuildContext? get context => throw _privateConstructorUsedError;
-  List<MCart>? get cartProducts => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $CheckOutPressedCopyWith<CheckOutPressed> get copyWith =>
@@ -450,7 +453,12 @@ abstract class $CheckOutPressedCopyWith<$Res> {
           CheckOutPressed value, $Res Function(CheckOutPressed) then) =
       _$CheckOutPressedCopyWithImpl<$Res, CheckOutPressed>;
   @useResult
-  $Res call({BuildContext? context, List<MCart>? cartProducts});
+  $Res call(
+      {String totalPrice,
+      String status,
+      String paymentMethod,
+      String shippingAddress,
+      BuildContext? context});
 }
 
 /// @nodoc
@@ -466,18 +474,33 @@ class _$CheckOutPressedCopyWithImpl<$Res, $Val extends CheckOutPressed>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? totalPrice = null,
+    Object? status = null,
+    Object? paymentMethod = null,
+    Object? shippingAddress = null,
     Object? context = freezed,
-    Object? cartProducts = freezed,
   }) {
     return _then(_value.copyWith(
+      totalPrice: null == totalPrice
+          ? _value.totalPrice
+          : totalPrice // ignore: cast_nullable_to_non_nullable
+              as String,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String,
+      paymentMethod: null == paymentMethod
+          ? _value.paymentMethod
+          : paymentMethod // ignore: cast_nullable_to_non_nullable
+              as String,
+      shippingAddress: null == shippingAddress
+          ? _value.shippingAddress
+          : shippingAddress // ignore: cast_nullable_to_non_nullable
+              as String,
       context: freezed == context
           ? _value.context
           : context // ignore: cast_nullable_to_non_nullable
               as BuildContext?,
-      cartProducts: freezed == cartProducts
-          ? _value.cartProducts
-          : cartProducts // ignore: cast_nullable_to_non_nullable
-              as List<MCart>?,
     ) as $Val);
   }
 }
@@ -490,7 +513,12 @@ abstract class _$$CheckOutPressedImplCopyWith<$Res>
       __$$CheckOutPressedImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({BuildContext? context, List<MCart>? cartProducts});
+  $Res call(
+      {String totalPrice,
+      String status,
+      String paymentMethod,
+      String shippingAddress,
+      BuildContext? context});
 }
 
 /// @nodoc
@@ -504,18 +532,33 @@ class __$$CheckOutPressedImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? totalPrice = null,
+    Object? status = null,
+    Object? paymentMethod = null,
+    Object? shippingAddress = null,
     Object? context = freezed,
-    Object? cartProducts = freezed,
   }) {
     return _then(_$CheckOutPressedImpl(
+      totalPrice: null == totalPrice
+          ? _value.totalPrice
+          : totalPrice // ignore: cast_nullable_to_non_nullable
+              as String,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String,
+      paymentMethod: null == paymentMethod
+          ? _value.paymentMethod
+          : paymentMethod // ignore: cast_nullable_to_non_nullable
+              as String,
+      shippingAddress: null == shippingAddress
+          ? _value.shippingAddress
+          : shippingAddress // ignore: cast_nullable_to_non_nullable
+              as String,
       context: freezed == context
           ? _value.context
           : context // ignore: cast_nullable_to_non_nullable
               as BuildContext?,
-      cartProducts: freezed == cartProducts
-          ? _value._cartProducts
-          : cartProducts // ignore: cast_nullable_to_non_nullable
-              as List<MCart>?,
     ));
   }
 }
@@ -523,24 +566,27 @@ class __$$CheckOutPressedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$CheckOutPressedImpl implements _CheckOutPressed {
-  const _$CheckOutPressedImpl({this.context, final List<MCart>? cartProducts})
-      : _cartProducts = cartProducts;
+  const _$CheckOutPressedImpl(
+      {required this.totalPrice,
+      required this.status,
+      required this.paymentMethod,
+      required this.shippingAddress,
+      this.context});
 
   @override
-  final BuildContext? context;
-  final List<MCart>? _cartProducts;
+  final String totalPrice;
   @override
-  List<MCart>? get cartProducts {
-    final value = _cartProducts;
-    if (value == null) return null;
-    if (_cartProducts is EqualUnmodifiableListView) return _cartProducts;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
+  final String status;
+  @override
+  final String paymentMethod;
+  @override
+  final String shippingAddress;
+  @override
+  final BuildContext? context;
 
   @override
   String toString() {
-    return 'CheckOutPressed(context: $context, cartProducts: $cartProducts)';
+    return 'CheckOutPressed(totalPrice: $totalPrice, status: $status, paymentMethod: $paymentMethod, shippingAddress: $shippingAddress, context: $context)';
   }
 
   @override
@@ -548,14 +594,19 @@ class _$CheckOutPressedImpl implements _CheckOutPressed {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CheckOutPressedImpl &&
-            (identical(other.context, context) || other.context == context) &&
-            const DeepCollectionEquality()
-                .equals(other._cartProducts, _cartProducts));
+            (identical(other.totalPrice, totalPrice) ||
+                other.totalPrice == totalPrice) &&
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.paymentMethod, paymentMethod) ||
+                other.paymentMethod == paymentMethod) &&
+            (identical(other.shippingAddress, shippingAddress) ||
+                other.shippingAddress == shippingAddress) &&
+            (identical(other.context, context) || other.context == context));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, context, const DeepCollectionEquality().hash(_cartProducts));
+      runtimeType, totalPrice, status, paymentMethod, shippingAddress, context);
 
   @JsonKey(ignore: true)
   @override
@@ -567,13 +618,22 @@ class _$CheckOutPressedImpl implements _CheckOutPressed {
 
 abstract class _CheckOutPressed implements CheckOutPressed {
   const factory _CheckOutPressed(
-      {final BuildContext? context,
-      final List<MCart>? cartProducts}) = _$CheckOutPressedImpl;
+      {required final String totalPrice,
+      required final String status,
+      required final String paymentMethod,
+      required final String shippingAddress,
+      final BuildContext? context}) = _$CheckOutPressedImpl;
 
   @override
-  BuildContext? get context;
+  String get totalPrice;
   @override
-  List<MCart>? get cartProducts;
+  String get status;
+  @override
+  String get paymentMethod;
+  @override
+  String get shippingAddress;
+  @override
+  BuildContext? get context;
   @override
   @JsonKey(ignore: true)
   _$$CheckOutPressedImplCopyWith<_$CheckOutPressedImpl> get copyWith =>

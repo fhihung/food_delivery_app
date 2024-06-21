@@ -200,6 +200,7 @@ abstract class _ProductsByBrandIdFetched implements ProductsByBrandIdFetched {
 
 /// @nodoc
 mixin _$AddProductPressed {
+  BuildContext get context => throw _privateConstructorUsedError;
   int get productId => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -213,7 +214,7 @@ abstract class $AddProductPressedCopyWith<$Res> {
           AddProductPressed value, $Res Function(AddProductPressed) then) =
       _$AddProductPressedCopyWithImpl<$Res, AddProductPressed>;
   @useResult
-  $Res call({int productId});
+  $Res call({BuildContext context, int productId});
 }
 
 /// @nodoc
@@ -229,9 +230,14 @@ class _$AddProductPressedCopyWithImpl<$Res, $Val extends AddProductPressed>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? context = null,
     Object? productId = null,
   }) {
     return _then(_value.copyWith(
+      context: null == context
+          ? _value.context
+          : context // ignore: cast_nullable_to_non_nullable
+              as BuildContext,
       productId: null == productId
           ? _value.productId
           : productId // ignore: cast_nullable_to_non_nullable
@@ -248,7 +254,7 @@ abstract class _$$AddProductPressedImplCopyWith<$Res>
       __$$AddProductPressedImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int productId});
+  $Res call({BuildContext context, int productId});
 }
 
 /// @nodoc
@@ -262,9 +268,14 @@ class __$$AddProductPressedImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? context = null,
     Object? productId = null,
   }) {
     return _then(_$AddProductPressedImpl(
+      context: null == context
+          ? _value.context
+          : context // ignore: cast_nullable_to_non_nullable
+              as BuildContext,
       productId: null == productId
           ? _value.productId
           : productId // ignore: cast_nullable_to_non_nullable
@@ -276,14 +287,17 @@ class __$$AddProductPressedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$AddProductPressedImpl implements _AddProductPressed {
-  const _$AddProductPressedImpl({required this.productId});
+  const _$AddProductPressedImpl(
+      {required this.context, required this.productId});
 
+  @override
+  final BuildContext context;
   @override
   final int productId;
 
   @override
   String toString() {
-    return 'AddProductPressed(productId: $productId)';
+    return 'AddProductPressed(context: $context, productId: $productId)';
   }
 
   @override
@@ -291,12 +305,13 @@ class _$AddProductPressedImpl implements _AddProductPressed {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AddProductPressedImpl &&
+            (identical(other.context, context) || other.context == context) &&
             (identical(other.productId, productId) ||
                 other.productId == productId));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, productId);
+  int get hashCode => Object.hash(runtimeType, context, productId);
 
   @JsonKey(ignore: true)
   @override
@@ -307,9 +322,12 @@ class _$AddProductPressedImpl implements _AddProductPressed {
 }
 
 abstract class _AddProductPressed implements AddProductPressed {
-  const factory _AddProductPressed({required final int productId}) =
-      _$AddProductPressedImpl;
+  const factory _AddProductPressed(
+      {required final BuildContext context,
+      required final int productId}) = _$AddProductPressedImpl;
 
+  @override
+  BuildContext get context;
   @override
   int get productId;
   @override

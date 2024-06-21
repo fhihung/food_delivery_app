@@ -50,7 +50,9 @@ class ProductScreen extends StatelessWidget {
                           // image: product.image,
                           brand: product.brand?.name ?? '',
                           onIconPressed: () {
-                            context.read<ProductBloc>().add(AddProductPressed(productId: product.id!));
+                            context
+                                .read<ProductBloc>()
+                                .add(AddProductPressed(context: context, productId: product.id!));
                           },
                         );
                       } else {

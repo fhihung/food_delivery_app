@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'product_event.freezed.dart';
@@ -21,6 +22,7 @@ class ProductsByBrandIdFetched extends ProductEvent with _$ProductsByBrandIdFetc
 @freezed
 class AddProductPressed extends ProductEvent with _$AddProductPressed {
   const factory AddProductPressed({
+    required BuildContext context,
     required int productId,
   }) = _AddProductPressed;
 }

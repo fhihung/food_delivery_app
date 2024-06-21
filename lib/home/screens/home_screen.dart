@@ -7,6 +7,8 @@ import 'package:food_delivery_app/home/bloc/home_event.dart';
 import 'package:food_delivery_app/home/bloc/home_state.dart';
 import 'package:food_delivery_app/home/widgets/home_app_bar.dart';
 import 'package:food_delivery_app/home/widgets/promotion_slider.dart';
+import 'package:food_delivery_app/product/bloc/product_bloc.dart';
+import 'package:food_delivery_app/product/bloc/product_event.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -116,6 +118,11 @@ class HomeScreen extends StatelessWidget {
                               price: product.price,
                               // image: product.image,
                               brand: product.brand?.name,
+                              onIconPressed: () {
+                                context
+                                    .read<ProductBloc>()
+                                    .add(AddProductPressed(context: context, productId: product.id!));
+                              },
                             );
                           } else {
                             return const SkeletonProductCardVertical();

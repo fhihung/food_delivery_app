@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_delivery_app/app/app.dart';
-import 'package:food_delivery_app/app/router.dart';
 import 'package:food_delivery_app/login/bloc/login_bloc.dart';
 import 'package:food_delivery_app/login/bloc/login_event.dart';
 import 'package:food_delivery_app/login/bloc/login_state.dart';
+import 'package:food_delivery_app/sign_up/screens/sign_up_screen.dart';
 import 'package:iconsax/iconsax.dart';
 
 class LoginForm extends StatelessWidget {
@@ -14,10 +14,13 @@ class LoginForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final emailController = TextEditingController();
+    final passwordController = TextEditingController();
     return BlocBuilder<LoginBloc, LoginState>(
       builder: (context, state) {
         final bloc = context.read<LoginBloc>();
         return Form(
+          autovalidateMode: AutovalidateMode.onUserInteraction,
           child: Padding(
             padding: const EdgeInsets.symmetric(
               vertical: AppSizes.spaceBtwSections,
@@ -26,6 +29,7 @@ class LoginForm extends StatelessWidget {
               children: [
                 /// Email
                 TextFormField(
+                  controller: emailController,
                   decoration: const InputDecoration(
                     prefixIcon: Icon(Iconsax.direct_right),
                     labelText: 'Account',
@@ -35,6 +39,7 @@ class LoginForm extends StatelessWidget {
 
                 /// Password
                 TextFormField(
+                  controller: passwordController,
                   obscureText: !state.isShowPassword,
                   decoration: InputDecoration(
                     prefixIcon: const Icon(Iconsax.password_check),
@@ -86,7 +91,13 @@ class LoginForm extends StatelessWidget {
                   width: double.infinity,
                   child: ElevatedButton(
                     onPressed: () {
-                      router.go('/home');
+                      bloc.add(
+                        LoginButtonPressed(
+                          context: context,
+                          email: emailController.text,
+                          password: passwordController.text,
+                        ),
+                      );
                     },
                     child: const Text(AppTexts.signIn),
                   ),
@@ -99,7 +110,12 @@ class LoginForm extends StatelessWidget {
                   width: double.infinity,
                   child: OutlinedButton(
                     onPressed: () {
-                      router.go('/sign_up');
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute<void>(
+                          builder: (context) => const SignUpScreen(),
+                        ),
+                      );
                     },
                     child: const Text(
                       AppTexts.createAccount,

@@ -10,11 +10,21 @@ class ShopBloc extends Bloc<ShopEvent, ShopState> {
     on<ShopInitiated>(
       _onShopInitiated,
     );
-    on<DrinksFetched>(
-      _onFetchDrinks,
+    on<RicesFetched>(
+      _onRicesFetched,
     );
-    on<FoodsFetched>(
-      _onFetchFoods,
+
+    on<NoodlesFetched>(
+      _onNoodlesFetched,
+    );
+    on<DrinksFetched>(
+      _onDrinksFetched,
+    );
+    on<JunkFoodsFetched>(
+      _onJunkFoodsFetched,
+    );
+    on<BrandsFetched>(
+      _onBrandsFetched,
     );
   }
   final ShopController shopController;
@@ -23,16 +33,40 @@ class ShopBloc extends Bloc<ShopEvent, ShopState> {
     ShopInitiated event,
     Emitter<ShopState> emit,
   ) async {
+    // try {
+    //   final drinks = await shopController.fetchDrinks();
+    //   final foods = await shopController.fetchNoodles();
+    //   emit(state.copyWith(fetchedDrinks: drinks, fetchedFoods: foods));
+    // } catch (error) {
+    //   emit(state.copyWith(errorMessage: error.toString()));
+    // }
+  }
+
+  Future<void> _onRicesFetched(
+    RicesFetched event,
+    Emitter<ShopState> emit,
+  ) async {
     try {
-      final drinks = await shopController.fetchDrinks();
-      final foods = await shopController.fetchFoods();
-      emit(state.copyWith(fetchedDrinks: drinks, fetchedFoods: foods));
+      final rices = await shopController.fetchRices();
+      emit(state.copyWith(fetchedRices: rices));
     } catch (error) {
-      emit(state.copyWith(errorMessage: error.toString()));
+      // Handle error
     }
   }
 
-  Future<void> _onFetchDrinks(
+  Future<void> _onNoodlesFetched(
+    NoodlesFetched event,
+    Emitter<ShopState> emit,
+  ) async {
+    try {
+      final noodles = await shopController.fetchNoodles();
+      emit(state.copyWith(fetchedNoodles: noodles));
+    } catch (error) {
+      // Handle error
+    }
+  }
+
+  Future<void> _onDrinksFetched(
     DrinksFetched event,
     Emitter<ShopState> emit,
   ) async {
@@ -44,14 +78,28 @@ class ShopBloc extends Bloc<ShopEvent, ShopState> {
     }
   }
 
-  Future<void> _onFetchFoods(
-    FoodsFetched event,
+  Future<void> _onJunkFoodsFetched(
+    JunkFoodsFetched event,
     Emitter<ShopState> emit,
   ) async {
     try {
-      final foods = await shopController.fetchFoods();
-      emit(state.copyWith(fetchedFoods: foods));
+      final junkFoods = await shopController.fetchJunkFoods();
+      emit(state.copyWith(fetchedJunkFoods: junkFoods));
     } catch (error) {
+      // Handle error
+    }
+  }
+
+  Future<void> _onBrandsFetched(
+    BrandsFetched event,
+    Emitter<ShopState> emit,
+  ) async {
+    emit(state.copyWith(isLoading: true));
+    try {
+      final brands = await shopController.fetchBrands();
+      emit(state.copyWith(brands: brands, isLoading: false));
+    } catch (error) {
+      emit(state.copyWith(isLoading: true));
       // Handle error
     }
   }

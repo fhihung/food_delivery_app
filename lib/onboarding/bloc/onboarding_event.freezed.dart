@@ -199,12 +199,20 @@ abstract class _OnBoardingPageChanged implements OnBoardingPageChanged {
 }
 
 /// @nodoc
-mixin _$NextPage {}
+mixin _$NextPage {
+  BuildContext get context => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $NextPageCopyWith<NextPage> get copyWith =>
+      throw _privateConstructorUsedError;
+}
 
 /// @nodoc
 abstract class $NextPageCopyWith<$Res> {
   factory $NextPageCopyWith(NextPage value, $Res Function(NextPage) then) =
       _$NextPageCopyWithImpl<$Res, NextPage>;
+  @useResult
+  $Res call({BuildContext context});
 }
 
 /// @nodoc
@@ -216,13 +224,30 @@ class _$NextPageCopyWithImpl<$Res, $Val extends NextPage>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? context = null,
+  }) {
+    return _then(_value.copyWith(
+      context: null == context
+          ? _value.context
+          : context // ignore: cast_nullable_to_non_nullable
+              as BuildContext,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$NextPageImplCopyWith<$Res> {
+abstract class _$$NextPageImplCopyWith<$Res>
+    implements $NextPageCopyWith<$Res> {
   factory _$$NextPageImplCopyWith(
           _$NextPageImpl value, $Res Function(_$NextPageImpl) then) =
       __$$NextPageImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({BuildContext context});
 }
 
 /// @nodoc
@@ -232,40 +257,80 @@ class __$$NextPageImplCopyWithImpl<$Res>
   __$$NextPageImplCopyWithImpl(
       _$NextPageImpl _value, $Res Function(_$NextPageImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? context = null,
+  }) {
+    return _then(_$NextPageImpl(
+      context: null == context
+          ? _value.context
+          : context // ignore: cast_nullable_to_non_nullable
+              as BuildContext,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$NextPageImpl implements _NextPage {
-  const _$NextPageImpl();
+  const _$NextPageImpl({required this.context});
+
+  @override
+  final BuildContext context;
 
   @override
   String toString() {
-    return 'NextPage()';
+    return 'NextPage(context: $context)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$NextPageImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$NextPageImpl &&
+            (identical(other.context, context) || other.context == context));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, context);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$NextPageImplCopyWith<_$NextPageImpl> get copyWith =>
+      __$$NextPageImplCopyWithImpl<_$NextPageImpl>(this, _$identity);
 }
 
 abstract class _NextPage implements NextPage {
-  const factory _NextPage() = _$NextPageImpl;
+  const factory _NextPage({required final BuildContext context}) =
+      _$NextPageImpl;
+
+  @override
+  BuildContext get context;
+  @override
+  @JsonKey(ignore: true)
+  _$$NextPageImplCopyWith<_$NextPageImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-mixin _$SkipPressed {}
+mixin _$SkipPressed {
+  BuildContext get context => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $SkipPressedCopyWith<SkipPressed> get copyWith =>
+      throw _privateConstructorUsedError;
+}
 
 /// @nodoc
 abstract class $SkipPressedCopyWith<$Res> {
   factory $SkipPressedCopyWith(
           SkipPressed value, $Res Function(SkipPressed) then) =
       _$SkipPressedCopyWithImpl<$Res, SkipPressed>;
+  @useResult
+  $Res call({BuildContext context});
 }
 
 /// @nodoc
@@ -277,13 +342,30 @@ class _$SkipPressedCopyWithImpl<$Res, $Val extends SkipPressed>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? context = null,
+  }) {
+    return _then(_value.copyWith(
+      context: null == context
+          ? _value.context
+          : context // ignore: cast_nullable_to_non_nullable
+              as BuildContext,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$SkipPressedImplCopyWith<$Res> {
+abstract class _$$SkipPressedImplCopyWith<$Res>
+    implements $SkipPressedCopyWith<$Res> {
   factory _$$SkipPressedImplCopyWith(
           _$SkipPressedImpl value, $Res Function(_$SkipPressedImpl) then) =
       __$$SkipPressedImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({BuildContext context});
 }
 
 /// @nodoc
@@ -293,28 +375,60 @@ class __$$SkipPressedImplCopyWithImpl<$Res>
   __$$SkipPressedImplCopyWithImpl(
       _$SkipPressedImpl _value, $Res Function(_$SkipPressedImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? context = null,
+  }) {
+    return _then(_$SkipPressedImpl(
+      context: null == context
+          ? _value.context
+          : context // ignore: cast_nullable_to_non_nullable
+              as BuildContext,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$SkipPressedImpl implements _SkipPressed {
-  const _$SkipPressedImpl();
+  const _$SkipPressedImpl({required this.context});
+
+  @override
+  final BuildContext context;
 
   @override
   String toString() {
-    return 'SkipPressed()';
+    return 'SkipPressed(context: $context)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$SkipPressedImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$SkipPressedImpl &&
+            (identical(other.context, context) || other.context == context));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, context);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SkipPressedImplCopyWith<_$SkipPressedImpl> get copyWith =>
+      __$$SkipPressedImplCopyWithImpl<_$SkipPressedImpl>(this, _$identity);
 }
 
 abstract class _SkipPressed implements SkipPressed {
-  const factory _SkipPressed() = _$SkipPressedImpl;
+  const factory _SkipPressed({required final BuildContext context}) =
+      _$SkipPressedImpl;
+
+  @override
+  BuildContext get context;
+  @override
+  @JsonKey(ignore: true)
+  _$$SkipPressedImplCopyWith<_$SkipPressedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

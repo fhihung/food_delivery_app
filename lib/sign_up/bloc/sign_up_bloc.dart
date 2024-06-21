@@ -25,16 +25,22 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
     SignUpSubmitted event,
     Emitter<SignUpState> emit,
   ) async {
+    emit(state.copyWith(isLoading: true));
     try {
-      await signUpController.signUp(
-        event.account,
-        event.password,
+      await signUpController.register(
+        context: event.context,
         event.address,
         event.phoneNumber,
+        name: event.name,
+        role: 2,
+        email: event.email,
+        password: event.password,
+        passwordConfirmation: event.passwordConfirmation,
       );
+      emit(state.copyWith(isLoading: false));
     } catch (error) {
       // Handle error
-      emit(state.copyWith(errorMessage: error.toString()));
+      emit(state.copyWith(errorMessage: error.toString(), isLoading: false));
     }
   }
 }

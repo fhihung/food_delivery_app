@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'onboarding_event.freezed.dart';
@@ -20,10 +21,14 @@ class OnBoardingPageChanged extends OnBoardingEvent with _$OnBoardingPageChanged
 
 @freezed
 class NextPage extends OnBoardingEvent with _$NextPage {
-  const factory NextPage() = _NextPage;
+  const factory NextPage({
+    required BuildContext context,
+  }) = _NextPage;
 }
 
 @freezed
 class SkipPressed extends OnBoardingEvent with _$SkipPressed {
-  const factory SkipPressed() = _SkipPressed;
+  const factory SkipPressed({
+    required BuildContext context,
+  }) = _SkipPressed;
 }

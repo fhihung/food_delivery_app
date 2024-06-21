@@ -12,6 +12,7 @@ class ProductCardVertical extends StatelessWidget {
     this.title = 'Bulgogi Burger',
     super.key,
     this.isVerified,
+    this.onIconPressed,
   });
 
   final String? price;
@@ -21,6 +22,7 @@ class ProductCardVertical extends StatelessWidget {
   final String? brand;
   final double? discount;
   final bool? isVerified;
+  final VoidCallback? onIconPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -48,10 +50,10 @@ class ProductCardVertical extends StatelessWidget {
                 children: [
                   /// Thumbnail Image
                   RoundedImage(
-                    isNetworkImage: true,
-                    placeholderImage: AssetImage(
-                      Assets.images.products.tomiDogfood.path,
-                    ),
+                    // isNetworkImage: true,
+                    // placeholderImage: AssetImage(
+                    //   Assets.images.products.tomiDogfood.path,
+                    // ),
                     imageUrl: image ?? Assets.images.products.tomiDogfood.path,
                     applyImageRadius: true,
                   ),
@@ -120,7 +122,7 @@ class ProductCardVertical extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   ProductPrice(
-                    price: price.toString(),
+                    price: double.parse(price!).toStringAsFixed(2),
                   ),
                   Container(
                     decoration: const BoxDecoration(
@@ -134,13 +136,16 @@ class ProductCardVertical extends StatelessWidget {
                         ),
                       ),
                     ),
-                    child: const SizedBox(
+                    child: SizedBox(
                       width: AppSizes.iconLg * 1.2,
                       height: AppSizes.iconLg * 1.2,
                       child: Center(
-                        child: Icon(
-                          Iconsax.add,
-                          color: AppColors.white,
+                        child: IconButton(
+                          icon: const Icon(
+                            Iconsax.add,
+                            color: AppColors.white,
+                          ),
+                          onPressed: onIconPressed,
                         ),
                       ),
                     ),

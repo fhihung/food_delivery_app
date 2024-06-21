@@ -1,57 +1,148 @@
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
-import 'package:food_delivery_app/app/router.dart';
+import 'package:food_delivery_app/app/app.dart';
+import 'package:food_delivery_app/login/screens/login_screen.dart';
+import 'package:food_delivery_app/models/m_user.dart';
 import 'package:http/http.dart' as http;
 
 class SignUpController {
-  final String apiUrl = 'https://food.anbee.me/api/';
+  final String apiUrl = 'https://371e-14-248-162-193.ngrok-free.app/api/';
 
-  Future<String> signUp(
-    String account,
-    String password,
-    String address,
-    String phoneNumber,
-  ) async {
-    final url = Uri.parse('${apiUrl}users');
-    final data = <String, dynamic>{
-      'account': account,
-      'password': password,
-      'role': 2,
-      'address': address,
-      'phonenumber': phoneNumber,
-    };
-
+  Future<MUser?> register(
+    String? address,
+    String? phoneNumber, {
+    required String name,
+    required int role,
+    required String email,
+    required String password,
+    required String passwordConfirmation,
+    required BuildContext context,
+  }) async {
     final response = await http.post(
-      url,
-      headers: {'Content-Type': 'application/json'},
-      body: jsonEncode(data),
+      Uri.parse('${apiUrl}register'),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode(<String, dynamic>{
+        'name': name.toString(),
+        'role': role.toString(),
+        'email': email.toString(),
+        'password': password.toString(),
+        'password_confirmation': passwordConfirmation.toString(),
+        'address': address.toString(),
+        'phone_number': phoneNumber.toString(),
+      }),
     );
 
-    if (response.statusCode == 200 || response.statusCode == 201) {
-      // If the server returns a 200 OK or 201 Created response,
-      // then parse the JSON.
-      router.go('/login');
-      _showToast('Sign up successful');
-      return 'Sign up successful';
+    if (response.statusCode == 200) {
+      final jsonResponse = json.decode(response.body);
+      if (jsonResponse is Map<String, dynamic>) {
+        await showDialog<void>(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              backgroundColor: AppColors.white,
+              title: Text(
+                'Registration Successful',
+                textAlign: TextAlign.center,
+                style: Theme.of(context).textTheme.titleMedium,
+              ),
+              content: const Text(
+                'Your account has been created successfully.',
+                textAlign: TextAlign.center,
+              ),
+              actions: <Widget>[
+                SizedBox(
+                  width: double.maxFinite,
+                  child: ElevatedButton(
+                    child: const Text('OK'),
+                    onPressed: () {
+                      Navigator.of(context).pop(); // Close the dialog
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute<void>(
+                          builder: (context) => const LoginScreen(),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              ],
+            );
+          },
+        );
+
+        return MUser.fromJson(jsonResponse);
+      } else {
+        await showDialog<void>(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              backgroundColor: AppColors.white,
+              title: Text(
+                'Unexpected response format.',
+                textAlign: TextAlign.center,
+                style: Theme.of(context).textTheme.titleMedium!.apply(
+                      color: AppColors.warning,
+                    ),
+              ),
+              content: const Text('The response was not in the expected format.'),
+              actions: <Widget>[
+                SizedBox(
+                  width: double.maxFinite,
+                  child: ElevatedButton(
+                    child: const Text('Again'),
+                    onPressed: () {
+                      Navigator.of(context).pop(); // Close the dialog
+                    },
+                  ),
+                ),
+              ],
+            );
+          },
+        );
+        if (kDebugMode) {
+          print('Unexpected response format.');
+        }
+        return null;
+      }
     } else {
-      // If the server did not return a 200 OK or 201 Created response,
-      // then throw an exception.
-      _showToast('Failed to sign up');
-      throw Exception('Failed to sign up');
+      await showDialog<void>(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            backgroundColor: AppColors.white,
+            title: Text(
+              'Failed to register user',
+              textAlign: TextAlign.center,
+              style: Theme.of(context).textTheme.titleMedium!.apply(
+                    color: AppColors.warning,
+                  ),
+            ),
+            content: Text(
+              'Status Code: ${response.statusCode}',
+              textAlign: TextAlign.center,
+            ),
+            actions: <Widget>[
+              SizedBox(
+                width: double.maxFinite,
+                child: ElevatedButton(
+                  child: const Text('Again'),
+                  onPressed: () {
+                    Navigator.of(context).pop(); // Close the dialog
+                  },
+                ),
+              ),
+            ],
+          );
+        },
+      );
+      if (kDebugMode) {
+        print('Failed to register user: ${response.statusCode}');
+      }
+      return null;
     }
-  }
-
-  void _showToast(String message) {
-    Fluttertoast.showToast(
-      msg: message,
-      toastLength: Toast.LENGTH_SHORT,
-      gravity: ToastGravity.TOP,
-      timeInSecForIosWeb: 1,
-      backgroundColor: Colors.black,
-      textColor: Colors.white,
-      fontSize: 16.0,
-    );
   }
 }

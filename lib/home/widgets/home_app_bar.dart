@@ -3,8 +3,10 @@ import 'package:food_delivery_app/app/app.dart';
 
 class HomeAppBar extends StatelessWidget {
   const HomeAppBar({
+    required this.title,
     super.key,
   });
+  final String title;
 
   @override
   Widget build(BuildContext context) {
@@ -19,16 +21,19 @@ class HomeAppBar extends StatelessWidget {
                 ),
           ),
           Text(
-            AppTexts.homeAppbarSubTitle,
+            title,
             style: Theme.of(context).textTheme.headlineSmall!.apply(
                   color: AppColors.white,
                 ),
           ),
         ],
       ),
-      actions: const [
+      actions: [
         QuantityCart(
           quantity: 3,
+          // onPressed: () {
+          //   router.go('/cart');
+          // },
         ),
       ],
     );

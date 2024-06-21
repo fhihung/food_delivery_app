@@ -76,19 +76,19 @@ abstract class _ShopInitiated implements ShopInitiated {
 }
 
 /// @nodoc
-mixin _$FoodsFetched {}
+mixin _$RicesFetched {}
 
 /// @nodoc
-abstract class $FoodsFetchedCopyWith<$Res> {
-  factory $FoodsFetchedCopyWith(
-          FoodsFetched value, $Res Function(FoodsFetched) then) =
-      _$FoodsFetchedCopyWithImpl<$Res, FoodsFetched>;
+abstract class $RicesFetchedCopyWith<$Res> {
+  factory $RicesFetchedCopyWith(
+          RicesFetched value, $Res Function(RicesFetched) then) =
+      _$RicesFetchedCopyWithImpl<$Res, RicesFetched>;
 }
 
 /// @nodoc
-class _$FoodsFetchedCopyWithImpl<$Res, $Val extends FoodsFetched>
-    implements $FoodsFetchedCopyWith<$Res> {
-  _$FoodsFetchedCopyWithImpl(this._value, this._then);
+class _$RicesFetchedCopyWithImpl<$Res, $Val extends RicesFetched>
+    implements $RicesFetchedCopyWith<$Res> {
+  _$RicesFetchedCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -97,43 +97,104 @@ class _$FoodsFetchedCopyWithImpl<$Res, $Val extends FoodsFetched>
 }
 
 /// @nodoc
-abstract class _$$FoodsFetchedImplCopyWith<$Res> {
-  factory _$$FoodsFetchedImplCopyWith(
-          _$FoodsFetchedImpl value, $Res Function(_$FoodsFetchedImpl) then) =
-      __$$FoodsFetchedImplCopyWithImpl<$Res>;
+abstract class _$$RicesFetchedImplCopyWith<$Res> {
+  factory _$$RicesFetchedImplCopyWith(
+          _$RicesFetchedImpl value, $Res Function(_$RicesFetchedImpl) then) =
+      __$$RicesFetchedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$FoodsFetchedImplCopyWithImpl<$Res>
-    extends _$FoodsFetchedCopyWithImpl<$Res, _$FoodsFetchedImpl>
-    implements _$$FoodsFetchedImplCopyWith<$Res> {
-  __$$FoodsFetchedImplCopyWithImpl(
-      _$FoodsFetchedImpl _value, $Res Function(_$FoodsFetchedImpl) _then)
+class __$$RicesFetchedImplCopyWithImpl<$Res>
+    extends _$RicesFetchedCopyWithImpl<$Res, _$RicesFetchedImpl>
+    implements _$$RicesFetchedImplCopyWith<$Res> {
+  __$$RicesFetchedImplCopyWithImpl(
+      _$RicesFetchedImpl _value, $Res Function(_$RicesFetchedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$FoodsFetchedImpl implements _FoodsFetched {
-  const _$FoodsFetchedImpl();
+class _$RicesFetchedImpl implements _RicesFetched {
+  const _$RicesFetchedImpl();
 
   @override
   String toString() {
-    return 'FoodsFetched()';
+    return 'RicesFetched()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$FoodsFetchedImpl);
+        (other.runtimeType == runtimeType && other is _$RicesFetchedImpl);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
 }
 
-abstract class _FoodsFetched implements FoodsFetched {
-  const factory _FoodsFetched() = _$FoodsFetchedImpl;
+abstract class _RicesFetched implements RicesFetched {
+  const factory _RicesFetched() = _$RicesFetchedImpl;
+}
+
+/// @nodoc
+mixin _$NoodlesFetched {}
+
+/// @nodoc
+abstract class $NoodlesFetchedCopyWith<$Res> {
+  factory $NoodlesFetchedCopyWith(
+          NoodlesFetched value, $Res Function(NoodlesFetched) then) =
+      _$NoodlesFetchedCopyWithImpl<$Res, NoodlesFetched>;
+}
+
+/// @nodoc
+class _$NoodlesFetchedCopyWithImpl<$Res, $Val extends NoodlesFetched>
+    implements $NoodlesFetchedCopyWith<$Res> {
+  _$NoodlesFetchedCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$NoodlesFetchedImplCopyWith<$Res> {
+  factory _$$NoodlesFetchedImplCopyWith(_$NoodlesFetchedImpl value,
+          $Res Function(_$NoodlesFetchedImpl) then) =
+      __$$NoodlesFetchedImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$NoodlesFetchedImplCopyWithImpl<$Res>
+    extends _$NoodlesFetchedCopyWithImpl<$Res, _$NoodlesFetchedImpl>
+    implements _$$NoodlesFetchedImplCopyWith<$Res> {
+  __$$NoodlesFetchedImplCopyWithImpl(
+      _$NoodlesFetchedImpl _value, $Res Function(_$NoodlesFetchedImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$NoodlesFetchedImpl implements _NoodlesFetched {
+  const _$NoodlesFetchedImpl();
+
+  @override
+  String toString() {
+    return 'NoodlesFetched()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$NoodlesFetchedImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+}
+
+abstract class _NoodlesFetched implements NoodlesFetched {
+  const factory _NoodlesFetched() = _$NoodlesFetchedImpl;
 }
 
 /// @nodoc
@@ -195,4 +256,126 @@ class _$DrinksFetchedImpl implements _DrinksFetched {
 
 abstract class _DrinksFetched implements DrinksFetched {
   const factory _DrinksFetched() = _$DrinksFetchedImpl;
+}
+
+/// @nodoc
+mixin _$JunkFoodsFetched {}
+
+/// @nodoc
+abstract class $JunkFoodsFetchedCopyWith<$Res> {
+  factory $JunkFoodsFetchedCopyWith(
+          JunkFoodsFetched value, $Res Function(JunkFoodsFetched) then) =
+      _$JunkFoodsFetchedCopyWithImpl<$Res, JunkFoodsFetched>;
+}
+
+/// @nodoc
+class _$JunkFoodsFetchedCopyWithImpl<$Res, $Val extends JunkFoodsFetched>
+    implements $JunkFoodsFetchedCopyWith<$Res> {
+  _$JunkFoodsFetchedCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$JunkFoodsFetchedImplCopyWith<$Res> {
+  factory _$$JunkFoodsFetchedImplCopyWith(_$JunkFoodsFetchedImpl value,
+          $Res Function(_$JunkFoodsFetchedImpl) then) =
+      __$$JunkFoodsFetchedImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$JunkFoodsFetchedImplCopyWithImpl<$Res>
+    extends _$JunkFoodsFetchedCopyWithImpl<$Res, _$JunkFoodsFetchedImpl>
+    implements _$$JunkFoodsFetchedImplCopyWith<$Res> {
+  __$$JunkFoodsFetchedImplCopyWithImpl(_$JunkFoodsFetchedImpl _value,
+      $Res Function(_$JunkFoodsFetchedImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$JunkFoodsFetchedImpl implements _JunkFoodsFetched {
+  const _$JunkFoodsFetchedImpl();
+
+  @override
+  String toString() {
+    return 'JunkFoodsFetched()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$JunkFoodsFetchedImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+}
+
+abstract class _JunkFoodsFetched implements JunkFoodsFetched {
+  const factory _JunkFoodsFetched() = _$JunkFoodsFetchedImpl;
+}
+
+/// @nodoc
+mixin _$BrandsFetched {}
+
+/// @nodoc
+abstract class $BrandsFetchedCopyWith<$Res> {
+  factory $BrandsFetchedCopyWith(
+          BrandsFetched value, $Res Function(BrandsFetched) then) =
+      _$BrandsFetchedCopyWithImpl<$Res, BrandsFetched>;
+}
+
+/// @nodoc
+class _$BrandsFetchedCopyWithImpl<$Res, $Val extends BrandsFetched>
+    implements $BrandsFetchedCopyWith<$Res> {
+  _$BrandsFetchedCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$BrandsFetchedImplCopyWith<$Res> {
+  factory _$$BrandsFetchedImplCopyWith(
+          _$BrandsFetchedImpl value, $Res Function(_$BrandsFetchedImpl) then) =
+      __$$BrandsFetchedImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$BrandsFetchedImplCopyWithImpl<$Res>
+    extends _$BrandsFetchedCopyWithImpl<$Res, _$BrandsFetchedImpl>
+    implements _$$BrandsFetchedImplCopyWith<$Res> {
+  __$$BrandsFetchedImplCopyWithImpl(
+      _$BrandsFetchedImpl _value, $Res Function(_$BrandsFetchedImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$BrandsFetchedImpl implements _BrandsFetched {
+  const _$BrandsFetchedImpl();
+
+  @override
+  String toString() {
+    return 'BrandsFetched()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$BrandsFetchedImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+}
+
+abstract class _BrandsFetched implements BrandsFetched {
+  const factory _BrandsFetched() = _$BrandsFetchedImpl;
 }

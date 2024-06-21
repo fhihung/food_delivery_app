@@ -16,8 +16,10 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$SignUpState {
-  SignUpStatus get status => throw _privateConstructorUsedError;
+  bool get isLoading => throw _privateConstructorUsedError;
   String get errorMessage => throw _privateConstructorUsedError;
+  String? get token => throw _privateConstructorUsedError;
+  MUser? get user => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SignUpStateCopyWith<SignUpState> get copyWith =>
@@ -30,7 +32,7 @@ abstract class $SignUpStateCopyWith<$Res> {
           SignUpState value, $Res Function(SignUpState) then) =
       _$SignUpStateCopyWithImpl<$Res, SignUpState>;
   @useResult
-  $Res call({SignUpStatus status, String errorMessage});
+  $Res call({bool isLoading, String errorMessage, String? token, MUser? user});
 }
 
 /// @nodoc
@@ -46,18 +48,28 @@ class _$SignUpStateCopyWithImpl<$Res, $Val extends SignUpState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? status = null,
+    Object? isLoading = null,
     Object? errorMessage = null,
+    Object? token = freezed,
+    Object? user = freezed,
   }) {
     return _then(_value.copyWith(
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as SignUpStatus,
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
       errorMessage: null == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String,
+      token: freezed == token
+          ? _value.token
+          : token // ignore: cast_nullable_to_non_nullable
+              as String?,
+      user: freezed == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as MUser?,
     ) as $Val);
   }
 }
@@ -70,7 +82,7 @@ abstract class _$$SignUpStateImplCopyWith<$Res>
       __$$SignUpStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({SignUpStatus status, String errorMessage});
+  $Res call({bool isLoading, String errorMessage, String? token, MUser? user});
 }
 
 /// @nodoc
@@ -84,18 +96,28 @@ class __$$SignUpStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? status = null,
+    Object? isLoading = null,
     Object? errorMessage = null,
+    Object? token = freezed,
+    Object? user = freezed,
   }) {
     return _then(_$SignUpStateImpl(
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as SignUpStatus,
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
       errorMessage: null == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String,
+      token: freezed == token
+          ? _value.token
+          : token // ignore: cast_nullable_to_non_nullable
+              as String?,
+      user: freezed == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as MUser?,
     ));
   }
 }
@@ -104,18 +126,22 @@ class __$$SignUpStateImplCopyWithImpl<$Res>
 
 class _$SignUpStateImpl implements _SignUpState {
   const _$SignUpStateImpl(
-      {this.status = SignUpStatus.initial, this.errorMessage = ''});
+      {this.isLoading = false, this.errorMessage = '', this.token, this.user});
 
   @override
   @JsonKey()
-  final SignUpStatus status;
+  final bool isLoading;
   @override
   @JsonKey()
   final String errorMessage;
+  @override
+  final String? token;
+  @override
+  final MUser? user;
 
   @override
   String toString() {
-    return 'SignUpState(status: $status, errorMessage: $errorMessage)';
+    return 'SignUpState(isLoading: $isLoading, errorMessage: $errorMessage, token: $token, user: $user)';
   }
 
   @override
@@ -123,13 +149,17 @@ class _$SignUpStateImpl implements _SignUpState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SignUpStateImpl &&
-            (identical(other.status, status) || other.status == status) &&
+            (identical(other.isLoading, isLoading) ||
+                other.isLoading == isLoading) &&
             (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage));
+                other.errorMessage == errorMessage) &&
+            (identical(other.token, token) || other.token == token) &&
+            (identical(other.user, user) || other.user == user));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, status, errorMessage);
+  int get hashCode =>
+      Object.hash(runtimeType, isLoading, errorMessage, token, user);
 
   @JsonKey(ignore: true)
   @override
@@ -140,13 +170,19 @@ class _$SignUpStateImpl implements _SignUpState {
 
 abstract class _SignUpState implements SignUpState {
   const factory _SignUpState(
-      {final SignUpStatus status,
-      final String errorMessage}) = _$SignUpStateImpl;
+      {final bool isLoading,
+      final String errorMessage,
+      final String? token,
+      final MUser? user}) = _$SignUpStateImpl;
 
   @override
-  SignUpStatus get status;
+  bool get isLoading;
   @override
   String get errorMessage;
+  @override
+  String? get token;
+  @override
+  MUser? get user;
   @override
   @JsonKey(ignore: true)
   _$$SignUpStateImplCopyWith<_$SignUpStateImpl> get copyWith =>

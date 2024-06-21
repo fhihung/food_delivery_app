@@ -40,6 +40,9 @@ dependencies:
   json_serializable: ^6.8.0
   json_annotation: ^4.9.0
   fluttertoast: ^8.2.6
+  shimmer: ^3.0.0
+  shared_preferences: ^2.2.3
+  rxdart: ^0.28.0
 
   #--------------- ./ PACKAGES END ------------------#
 

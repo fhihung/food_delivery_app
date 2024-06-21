@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery_app/app/app.dart';
 
 class CommonSectionHeading extends StatelessWidget {
   const CommonSectionHeading({
     required this.title,
+    this.showCartButton = false,
     super.key,
     this.onPressed,
     this.showTextButton = true,
@@ -12,11 +14,13 @@ class CommonSectionHeading extends StatelessWidget {
   final String title;
   final void Function()? onPressed;
   final bool showTextButton;
+  final bool showCartButton;
   final String textButton;
   final Color color;
 
   @override
   Widget build(BuildContext context) {
+    final dark = THelperFunctions.isDarkMode(context);
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -33,6 +37,13 @@ class CommonSectionHeading extends StatelessWidget {
             child: Text(
               textButton,
             ),
+          ),
+        ],
+        if (showCartButton) ...[
+          // const SizedBox(width: AppSizes.spaceBtwItems),
+          const Padding(
+            padding: EdgeInsets.only(right: AppSizes.defaultSpace),
+            child: QuantityCart(quantity: 3),
           ),
         ],
       ],

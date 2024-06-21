@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'sign_up_event.freezed.dart';
@@ -14,9 +15,12 @@ class SignUpInitiated extends SignUpEvent with _$SignUpInitiated {
 @freezed
 class SignUpSubmitted extends SignUpEvent with _$SignUpSubmitted {
   const factory SignUpSubmitted({
-    required String account,
+    required String name,
+    required String email,
     required String password,
+    required String passwordConfirmation,
     required String address,
     required String phoneNumber,
+    required BuildContext context,
   }) = _SignUpSubmitted;
 }

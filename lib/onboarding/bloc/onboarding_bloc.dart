@@ -2,12 +2,13 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:food_delivery_app/app/router.dart';
+import 'package:food_delivery_app/app/storage_service.dart';
+import 'package:food_delivery_app/login/screens/login_screen.dart';
 import 'package:food_delivery_app/onboarding/bloc/onboarding_event.dart';
 import 'package:food_delivery_app/onboarding/bloc/onboarding_state.dart';
 
 class OnBoardingBloc extends Bloc<OnBoardingEvent, OnBoardingState> {
-  OnBoardingBloc()
+  OnBoardingBloc(this.storageService)
       : super(
           OnBoardingState(
             pageController: PageController(),
@@ -23,6 +24,7 @@ class OnBoardingBloc extends Bloc<OnBoardingEvent, OnBoardingState> {
       _onSkipPressed,
     );
   }
+  final StorageService storageService;
 
   FutureOr<void> _onOnBoardingPageChanged(
     OnBoardingPageChanged event,
@@ -44,7 +46,13 @@ class OnBoardingBloc extends Bloc<OnBoardingEvent, OnBoardingState> {
         curve: Curves.linearToEaseOut,
       );
     } else {
-      router.go('/login');
+      storageService.setOnboardingComplete();
+      Navigator.push(
+        event.context,
+        MaterialPageRoute<void>(
+          builder: (context) => const LoginScreen(),
+        ),
+      );
     }
   }
 
@@ -52,6 +60,14 @@ class OnBoardingBloc extends Bloc<OnBoardingEvent, OnBoardingState> {
     SkipPressed event,
     Emitter<OnBoardingState> emit,
   ) {
-    router.go('/login');
+    storageService.setOnboardingComplete();
+    Navigator.push(
+      event.context,
+      MaterialPageRoute<void>(
+        builder: (context) {
+          return const LoginScreen();
+        },
+      ),
+    );
   }
 }

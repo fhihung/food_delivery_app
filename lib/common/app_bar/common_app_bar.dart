@@ -19,6 +19,7 @@ class CommonAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
+    final dark = THelperFunctions.isDarkMode(context);
     return Padding(
       padding: const EdgeInsets.symmetric(
         horizontal: AppSizes.md,
@@ -27,7 +28,10 @@ class CommonAppBar extends StatelessWidget implements PreferredSizeWidget {
         automaticallyImplyLeading: false,
         leading: showBackButton
             ? IconButton(
-                icon: Icon(leadingIcon ?? Iconsax.arrow_left),
+                icon: Icon(
+                  leadingIcon ?? Iconsax.arrow_left_2,
+                  color: dark ? AppColors.white : AppColors.dark,
+                ),
                 onPressed: leadingOnPressed ??
                     () {
                       // Get.back();

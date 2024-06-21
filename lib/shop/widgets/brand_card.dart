@@ -6,53 +6,62 @@ class BrandCard extends StatelessWidget {
     super.key,
     this.onTap,
     this.showBorder = true,
+    this.image,
+    this.title = '',
+    this.description = '',
   });
 
   final void Function()? onTap;
   final bool showBorder;
+  final String? image;
+  final String title;
+  final String description;
   @override
   Widget build(BuildContext context) {
     final dark = THelperFunctions.isDarkMode(context);
     return GestureDetector(
       onTap: onTap,
       child: RoundedContainer(
-          padding: const EdgeInsets.all(AppSizes.sm),
-          showBorder: showBorder,
-          backgroundColor: Colors.transparent,
-          child: Row(
-            children: [
-              /// Icon
-              Flexible(
-                child: CircularImage(
-                  image: Assets.icons.categories.icons8SparklingDiamond64.path,
-                  backgroundColor: Colors.transparent,
-                  overlayColor: dark ? Colors.white : Colors.black,
-                ),
-              ),
-              const SizedBox(
-                width: AppSizes.spaceBtwItems / 2,
-              ),
+        padding: const EdgeInsets.all(AppSizes.sm),
+        showBorder: showBorder,
+        backgroundColor: Colors.transparent,
+        child: Row(
+          children: [
+            /// Icon
+            CircularImage(
+              padding: 2,
+              height: 30,
+              width: 30,
+              image: image ?? Assets.icons.categories.icons8SparklingDiamond64.path,
+              backgroundColor: Colors.transparent,
+              overlayColor: dark ? Colors.white : Colors.black,
+            ),
+            const SizedBox(
+              width: AppSizes.spaceBtwItems / 2,
+            ),
 
-              /// Text
-              Expanded(
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const VerifiedBrand(
-                      title: 'Nike',
-                      brandTextSize: TextSizes.large,
-                    ),
-                    Text(
-                      '256 pppppppppppppppproducts',
-                      overflow: TextOverflow.ellipsis,
-                      style: Theme.of(context).textTheme.labelMedium,
-                    ),
-                  ],
-                ),
+            /// Text
+            Expanded(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    title,
+                    style: Theme.of(context).textTheme.titleLarge,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  Text(
+                    description,
+                    overflow: TextOverflow.ellipsis,
+                    style: Theme.of(context).textTheme.labelMedium,
+                  ),
+                ],
               ),
-            ],
-          ),),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

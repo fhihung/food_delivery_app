@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/app/app.dart';
-import 'package:iconsax/iconsax.dart';
 
 class VerifiedBrand extends StatelessWidget {
   const VerifiedBrand({
@@ -25,6 +24,7 @@ class VerifiedBrand extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      // mainAxisSize: MainAxisSize.max,
       children: [
         BrandTitle(
           title: title!,
@@ -33,15 +33,15 @@ class VerifiedBrand extends StatelessWidget {
           textAlign: textAlign,
           textSize: brandTextSize,
         ),
-        const SizedBox(
-          width: AppSizes.xs,
-        ),
-        if (isVerified && title!.isNotEmpty)
-          Icon(
-            Iconsax.verify5,
-            size: 16,
-            color: iconColor,
-          ),
+        // const SizedBox(
+        //   width: AppSizes.xs,
+        // ),
+        // if (isVerified && title!.isNotEmpty)
+        //   Icon(
+        //     Iconsax.verify5,
+        //     size: 16,
+        //     color: iconColor,
+        //   ),
       ],
     );
   }

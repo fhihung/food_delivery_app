@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/app/common_bottom_navigation.dart';
+import 'package:food_delivery_app/cart/screens/cart_screen.dart';
 import 'package:food_delivery_app/common/views/verify_email_view.dart';
 import 'package:food_delivery_app/forgot_password/screens/forgot_password_screen.dart';
 import 'package:food_delivery_app/login/bloc/login_state.dart';
@@ -15,7 +16,7 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: '/',
       builder: (BuildContext context, GoRouterState state) {
-        return OnBoardingScreen();
+        return LoginScreen();
       },
       routes: <RouteBase>[
         GoRoute(
@@ -42,6 +43,13 @@ final GoRouter router = GoRouter(
             return const ForgotPasswordScreen();
           },
         ),
+        GoRoute(
+          path: 'cart',
+          builder: (BuildContext context, GoRouterState state) {
+            return const CartScreen();
+          },
+        ),
+
         // GoRoute(
         //   path: 'verify_email',
         //   builder: (BuildContext context, GoRouterState state) {

@@ -16,8 +16,11 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$LoginState {
+  bool get isLoading => throw _privateConstructorUsedError;
   bool get isShowPassword => throw _privateConstructorUsedError;
   bool get isRememberMe => throw _privateConstructorUsedError;
+  String? get token => throw _privateConstructorUsedError;
+  MUser? get user => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $LoginStateCopyWith<LoginState> get copyWith =>
@@ -30,7 +33,12 @@ abstract class $LoginStateCopyWith<$Res> {
           LoginState value, $Res Function(LoginState) then) =
       _$LoginStateCopyWithImpl<$Res, LoginState>;
   @useResult
-  $Res call({bool isShowPassword, bool isRememberMe});
+  $Res call(
+      {bool isLoading,
+      bool isShowPassword,
+      bool isRememberMe,
+      String? token,
+      MUser? user});
 }
 
 /// @nodoc
@@ -46,10 +54,17 @@ class _$LoginStateCopyWithImpl<$Res, $Val extends LoginState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? isLoading = null,
     Object? isShowPassword = null,
     Object? isRememberMe = null,
+    Object? token = freezed,
+    Object? user = freezed,
   }) {
     return _then(_value.copyWith(
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
       isShowPassword: null == isShowPassword
           ? _value.isShowPassword
           : isShowPassword // ignore: cast_nullable_to_non_nullable
@@ -58,6 +73,14 @@ class _$LoginStateCopyWithImpl<$Res, $Val extends LoginState>
           ? _value.isRememberMe
           : isRememberMe // ignore: cast_nullable_to_non_nullable
               as bool,
+      token: freezed == token
+          ? _value.token
+          : token // ignore: cast_nullable_to_non_nullable
+              as String?,
+      user: freezed == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as MUser?,
     ) as $Val);
   }
 }
@@ -70,7 +93,12 @@ abstract class _$$LoginStateImplCopyWith<$Res>
       __$$LoginStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool isShowPassword, bool isRememberMe});
+  $Res call(
+      {bool isLoading,
+      bool isShowPassword,
+      bool isRememberMe,
+      String? token,
+      MUser? user});
 }
 
 /// @nodoc
@@ -84,10 +112,17 @@ class __$$LoginStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? isLoading = null,
     Object? isShowPassword = null,
     Object? isRememberMe = null,
+    Object? token = freezed,
+    Object? user = freezed,
   }) {
     return _then(_$LoginStateImpl(
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
       isShowPassword: null == isShowPassword
           ? _value.isShowPassword
           : isShowPassword // ignore: cast_nullable_to_non_nullable
@@ -96,6 +131,14 @@ class __$$LoginStateImplCopyWithImpl<$Res>
           ? _value.isRememberMe
           : isRememberMe // ignore: cast_nullable_to_non_nullable
               as bool,
+      token: freezed == token
+          ? _value.token
+          : token // ignore: cast_nullable_to_non_nullable
+              as String?,
+      user: freezed == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as MUser?,
     ));
   }
 }
@@ -104,18 +147,29 @@ class __$$LoginStateImplCopyWithImpl<$Res>
 
 class _$LoginStateImpl implements _LoginState {
   const _$LoginStateImpl(
-      {this.isShowPassword = false, this.isRememberMe = false});
+      {this.isLoading = false,
+      this.isShowPassword = false,
+      this.isRememberMe = false,
+      this.token,
+      this.user});
 
+  @override
+  @JsonKey()
+  final bool isLoading;
   @override
   @JsonKey()
   final bool isShowPassword;
   @override
   @JsonKey()
   final bool isRememberMe;
+  @override
+  final String? token;
+  @override
+  final MUser? user;
 
   @override
   String toString() {
-    return 'LoginState(isShowPassword: $isShowPassword, isRememberMe: $isRememberMe)';
+    return 'LoginState(isLoading: $isLoading, isShowPassword: $isShowPassword, isRememberMe: $isRememberMe, token: $token, user: $user)';
   }
 
   @override
@@ -123,14 +177,19 @@ class _$LoginStateImpl implements _LoginState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoginStateImpl &&
+            (identical(other.isLoading, isLoading) ||
+                other.isLoading == isLoading) &&
             (identical(other.isShowPassword, isShowPassword) ||
                 other.isShowPassword == isShowPassword) &&
             (identical(other.isRememberMe, isRememberMe) ||
-                other.isRememberMe == isRememberMe));
+                other.isRememberMe == isRememberMe) &&
+            (identical(other.token, token) || other.token == token) &&
+            (identical(other.user, user) || other.user == user));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isShowPassword, isRememberMe);
+  int get hashCode => Object.hash(
+      runtimeType, isLoading, isShowPassword, isRememberMe, token, user);
 
   @JsonKey(ignore: true)
   @override
@@ -141,12 +200,22 @@ class _$LoginStateImpl implements _LoginState {
 
 abstract class _LoginState implements LoginState {
   const factory _LoginState(
-      {final bool isShowPassword, final bool isRememberMe}) = _$LoginStateImpl;
+      {final bool isLoading,
+      final bool isShowPassword,
+      final bool isRememberMe,
+      final String? token,
+      final MUser? user}) = _$LoginStateImpl;
 
+  @override
+  bool get isLoading;
   @override
   bool get isShowPassword;
   @override
   bool get isRememberMe;
+  @override
+  String? get token;
+  @override
+  MUser? get user;
   @override
   @JsonKey(ignore: true)
   _$$LoginStateImplCopyWith<_$LoginStateImpl> get copyWith =>

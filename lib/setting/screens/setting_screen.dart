@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/app/app.dart';
+import 'package:food_delivery_app/app/storage_service.dart';
+import 'package:food_delivery_app/login/screens/login_screen.dart';
 import 'package:food_delivery_app/setting/widgets/menu_setting_tile.dart';
 import 'package:iconsax/iconsax.dart';
 
@@ -8,6 +10,8 @@ class SettingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final storageService = StorageService();
+    final dark = THelperFunctions.isDarkMode(context);
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -64,6 +68,7 @@ class SettingScreen extends StatelessWidget {
                 /// Account Setting
                 children: [
                   CommonSectionHeading(
+                    color: dark ? Colors.white : Colors.black,
                     title: 'Account Setting',
                     onPressed: () {},
                   ),
@@ -100,7 +105,8 @@ class SettingScreen extends StatelessWidget {
                     subtitle: 'Manage your privacy and security',
                     onTap: () {},
                   ),
-                  const CommonSectionHeading(
+                  CommonSectionHeading(
+                    color: dark ? Colors.white : Colors.black,
                     title: 'Other',
                     showTextButton: false,
                   ),
@@ -125,7 +131,15 @@ class SettingScreen extends StatelessWidget {
                   SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () async {
+                        await storageService.clear();
+                        await Navigator.push(
+                          context,
+                          MaterialPageRoute<void>(
+                            builder: (context) => const LoginScreen(),
+                          ),
+                        );
+                      },
                       child: Container(
                         child: Text('Sign Out'),
                       ),

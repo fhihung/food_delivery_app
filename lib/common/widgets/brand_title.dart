@@ -3,12 +3,14 @@ import 'package:food_delivery_app/app/app.dart';
 
 class BrandTitle extends StatelessWidget {
   const BrandTitle({
-    required this.title, super.key,
+    required this.title,
+    super.key,
     this.color,
     this.maxLines = 1,
     this.textAlign = TextAlign.center,
     this.textSize = TextSizes.small,
   });
+
   final String title;
   final Color? color;
   final int maxLines;
@@ -36,6 +38,7 @@ class BrandTitle extends StatelessWidget {
                       ),
       overflow: TextOverflow.ellipsis,
       maxLines: maxLines,
+      textAlign: textAlign,
     );
   }
 }

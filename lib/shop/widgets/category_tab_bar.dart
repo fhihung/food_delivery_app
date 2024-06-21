@@ -30,7 +30,7 @@ class CategoryTabBar extends StatelessWidget {
                 itemBuilder: (_, index) {
                   final item = items[index];
                   return ProductCardVertical(
-                    image: item.image as String?,
+                    // image: item.image as String?,
                     title: item.name as String?,
                     price: item.price as String?,
                     discount: 25,

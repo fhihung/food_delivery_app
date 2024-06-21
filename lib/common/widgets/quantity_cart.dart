@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/app/app.dart';
+import 'package:food_delivery_app/cart/screens/cart_screen.dart';
 import 'package:iconsax/iconsax.dart';
 
 class QuantityCart extends StatelessWidget {
@@ -21,7 +22,14 @@ class QuantityCart extends StatelessWidget {
             Iconsax.shopping_bag,
             color: color ?? (dark ? AppColors.white : AppColors.black),
           ),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute<void>(
+                builder: (context) => const CartScreen(),
+              ),
+            );
+          },
         ),
         CommonBadge(
           quantity: quantity,

@@ -32,66 +32,62 @@ class OnBoardingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => OnBoardingBloc(),
-      child: Builder(
-        builder: (context) {
-          final bloc = context.read<OnBoardingBloc>();
+    final bloc = context.read<OnBoardingBloc>();
+    return BlocBuilder<OnBoardingBloc, OnBoardingState>(
+      builder: (state, context) {
+        return BlocBuilder<OnBoardingBloc, OnBoardingState>(
+          builder: (context, state) {
+            return Scaffold(
+              body: Stack(
+                children: [
+                  // Scrollable Page View
+                  PageView(
+                    controller: state.pageController ?? PageController(),
+                    onPageChanged: (index) {
+                      bloc.add(OnBoardingPageChanged(id: index));
+                    },
+                    children: listPage,
+                  ),
 
-          return BlocBuilder<OnBoardingBloc, OnBoardingState>(
-            builder: (context, state) {
-              return Scaffold(
-                body: Stack(
-                  children: [
-                    // Scrollable Page View
-                    PageView(
+                  /// Skip Button
+                  Positioned(
+                    top: TDeviceUtils.getAppBarHeight(),
+                    right: AppSizes.defaultSpace,
+                    child: OnBoardingSkip(
+                      onPressed: () {
+                        bloc.add(SkipPressed(context: context));
+                      },
+                    ),
+                  ),
+
+                  // Page Indicator
+                  Positioned(
+                    bottom: TDeviceUtils.getBottomNavigationBarHeight() + 25,
+                    left: AppSizes.defaultSpace,
+                    child: PageIndicatorWidget(
                       controller: state.pageController ?? PageController(),
-                      onPageChanged: (index) {
+                      onDotClicked: (index) {
                         bloc.add(OnBoardingPageChanged(id: index));
                       },
-                      children: listPage,
                     ),
+                  ),
 
-                    /// Skip Button
-                    Positioned(
-                      top: TDeviceUtils.getAppBarHeight(),
-                      right: AppSizes.defaultSpace,
-                      child: OnBoardingSkip(
-                        onPressed: () {
-                          bloc.add(const SkipPressed());
-                        },
-                      ),
+                  // Next Button
+                  Positioned(
+                    bottom: TDeviceUtils.getBottomNavigationBarHeight(),
+                    right: AppSizes.defaultSpace,
+                    child: CircularButton(
+                      onPressed: () {
+                        bloc.add(NextPage(context: context));
+                      },
                     ),
-
-                    // Page Indicator
-                    Positioned(
-                      bottom: TDeviceUtils.getBottomNavigationBarHeight() + 25,
-                      left: AppSizes.defaultSpace,
-                      child: PageIndicatorWidget(
-                        controller: state.pageController ?? PageController(),
-                        onDotClicked: (index) {
-                          bloc.add(OnBoardingPageChanged(id: index));
-                        },
-                      ),
-                    ),
-
-                    // Next Button
-                    Positioned(
-                      bottom: TDeviceUtils.getBottomNavigationBarHeight(),
-                      right: AppSizes.defaultSpace,
-                      child: CircularButton(
-                        onPressed: () {
-                          bloc.add(const NextPage());
-                        },
-                      ),
-                    ),
-                  ],
-                ),
-              );
-            },
-          );
-        },
-      ),
+                  ),
+                ],
+              ),
+            );
+          },
+        );
+      },
     );
   }
 }

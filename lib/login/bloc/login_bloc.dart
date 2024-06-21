@@ -1,12 +1,14 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:food_delivery_app/app/router.dart';
+import 'package:flutter/material.dart';
+import 'package:food_delivery_app/app/common_bottom_navigation.dart';
 import 'package:food_delivery_app/login/bloc/login_event.dart';
 import 'package:food_delivery_app/login/bloc/login_state.dart';
+import 'package:food_delivery_app/login/controller/login_controller.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
-  LoginBloc() : super(const LoginState()) {
+  LoginBloc(this.loginController) : super(const LoginState()) {
     on<LoginInitiated>(
       _onLoginInitiated,
     );
@@ -19,19 +21,12 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     on<LoginButtonPressed>(
       _onLoginButtonPressed,
     );
-    on<CreateAccountButtonPressed>(
-      _onCreateAccountButtonPressed,
-    );
+
     on<ForgotPasswordButtonPressed>(
       _onForgotPasswordButtonPressed,
     );
-    on<SignInWithGooglePressed>(
-      _onSignInWithGooglePressed,
-    );
-    on<SignInWithFacebookPressed>(
-      _onSignInWithFacebookPressed,
-    );
   }
+  final LoginController loginController;
   FutureOr<void> _onLoginInitiated(
     LoginInitiated event,
     Emitter<LoginState> emit,
@@ -61,27 +56,27 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   FutureOr<void> _onLoginButtonPressed(
     LoginButtonPressed event,
     Emitter<LoginState> emit,
-  ) {}
-
-  FutureOr<void> _onCreateAccountButtonPressed(
-    CreateAccountButtonPressed event,
-    Emitter<LoginState> emit,
-  ) {}
+  ) async {
+    try {
+      // Call login API
+      final accessToken = await loginController.login(
+        event.email,
+        event.password,
+        event.context,
+      );
+      // Save token
+      emit(state.copyWith(token: accessToken));
+      await Navigator.pushReplacement(
+        event.context,
+        MaterialPageRoute<void>(
+          builder: (context) => const CommonBottomNavigation(),
+        ),
+      );
+    } catch (error) {}
+  }
 
   FutureOr<void> _onForgotPasswordButtonPressed(
     ForgotPasswordButtonPressed event,
-    Emitter<LoginState> emit,
-  ) {
-    router.go('/forgot_password');
-  }
-
-  FutureOr<void> _onSignInWithGooglePressed(
-    SignInWithGooglePressed event,
-    Emitter<LoginState> emit,
-  ) {}
-
-  FutureOr<void> _onSignInWithFacebookPressed(
-    SignInWithFacebookPressed event,
     Emitter<LoginState> emit,
   ) {}
 }

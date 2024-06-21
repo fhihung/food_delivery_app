@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'login_event.freezed.dart';
@@ -23,25 +24,14 @@ class RememberMePressed extends LoginEvent with _$RememberMePressed {
 
 @freezed
 class LoginButtonPressed extends LoginEvent with _$LoginButtonPressed {
-  const factory LoginButtonPressed() = _LoginButtonPressed;
-}
-
-@freezed
-class CreateAccountButtonPressed extends LoginEvent with _$CreateAccountButtonPressed {
-  const factory CreateAccountButtonPressed() = _CreateAccountButtonPressed;
+  const factory LoginButtonPressed({
+    required String email,
+    required String password,
+    required BuildContext context,
+  }) = _LoginButtonPressed;
 }
 
 @freezed
 class ForgotPasswordButtonPressed extends LoginEvent with _$ForgotPasswordButtonPressed {
   const factory ForgotPasswordButtonPressed() = _ForgotPasswordButtonPressed;
-}
-
-@freezed
-class SignInWithGooglePressed extends LoginEvent with _$SignInWithGooglePressed {
-  const factory SignInWithGooglePressed() = _SignInWithGooglePressed;
-}
-
-@freezed
-class SignInWithFacebookPressed extends LoginEvent with _$SignInWithFacebookPressed {
-  const factory SignInWithFacebookPressed() = _SignInWithFacebookPressed;
 }

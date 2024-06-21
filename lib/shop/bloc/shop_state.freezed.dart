@@ -16,9 +16,13 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ShopState {
-  List<MDrink> get fetchedDrinks => throw _privateConstructorUsedError;
-  List<MFood> get fetchedFoods => throw _privateConstructorUsedError;
+  List<MProduct> get fetchedRices => throw _privateConstructorUsedError;
+  List<MProduct> get fetchedNoodles => throw _privateConstructorUsedError;
+  List<MProduct> get fetchedDrinks => throw _privateConstructorUsedError;
+  List<MProduct> get fetchedJunkFoods => throw _privateConstructorUsedError;
+  List<MBrand> get brands => throw _privateConstructorUsedError;
   String get errorMessage => throw _privateConstructorUsedError;
+  bool get isLoading => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ShopStateCopyWith<ShopState> get copyWith =>
@@ -31,9 +35,13 @@ abstract class $ShopStateCopyWith<$Res> {
       _$ShopStateCopyWithImpl<$Res, ShopState>;
   @useResult
   $Res call(
-      {List<MDrink> fetchedDrinks,
-      List<MFood> fetchedFoods,
-      String errorMessage});
+      {List<MProduct> fetchedRices,
+      List<MProduct> fetchedNoodles,
+      List<MProduct> fetchedDrinks,
+      List<MProduct> fetchedJunkFoods,
+      List<MBrand> brands,
+      String errorMessage,
+      bool isLoading});
 }
 
 /// @nodoc
@@ -49,23 +57,43 @@ class _$ShopStateCopyWithImpl<$Res, $Val extends ShopState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? fetchedRices = null,
+    Object? fetchedNoodles = null,
     Object? fetchedDrinks = null,
-    Object? fetchedFoods = null,
+    Object? fetchedJunkFoods = null,
+    Object? brands = null,
     Object? errorMessage = null,
+    Object? isLoading = null,
   }) {
     return _then(_value.copyWith(
+      fetchedRices: null == fetchedRices
+          ? _value.fetchedRices
+          : fetchedRices // ignore: cast_nullable_to_non_nullable
+              as List<MProduct>,
+      fetchedNoodles: null == fetchedNoodles
+          ? _value.fetchedNoodles
+          : fetchedNoodles // ignore: cast_nullable_to_non_nullable
+              as List<MProduct>,
       fetchedDrinks: null == fetchedDrinks
           ? _value.fetchedDrinks
           : fetchedDrinks // ignore: cast_nullable_to_non_nullable
-              as List<MDrink>,
-      fetchedFoods: null == fetchedFoods
-          ? _value.fetchedFoods
-          : fetchedFoods // ignore: cast_nullable_to_non_nullable
-              as List<MFood>,
+              as List<MProduct>,
+      fetchedJunkFoods: null == fetchedJunkFoods
+          ? _value.fetchedJunkFoods
+          : fetchedJunkFoods // ignore: cast_nullable_to_non_nullable
+              as List<MProduct>,
+      brands: null == brands
+          ? _value.brands
+          : brands // ignore: cast_nullable_to_non_nullable
+              as List<MBrand>,
       errorMessage: null == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String,
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -79,9 +107,13 @@ abstract class _$$ShopStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {List<MDrink> fetchedDrinks,
-      List<MFood> fetchedFoods,
-      String errorMessage});
+      {List<MProduct> fetchedRices,
+      List<MProduct> fetchedNoodles,
+      List<MProduct> fetchedDrinks,
+      List<MProduct> fetchedJunkFoods,
+      List<MBrand> brands,
+      String errorMessage,
+      bool isLoading});
 }
 
 /// @nodoc
@@ -95,23 +127,43 @@ class __$$ShopStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? fetchedRices = null,
+    Object? fetchedNoodles = null,
     Object? fetchedDrinks = null,
-    Object? fetchedFoods = null,
+    Object? fetchedJunkFoods = null,
+    Object? brands = null,
     Object? errorMessage = null,
+    Object? isLoading = null,
   }) {
     return _then(_$ShopStateImpl(
+      fetchedRices: null == fetchedRices
+          ? _value._fetchedRices
+          : fetchedRices // ignore: cast_nullable_to_non_nullable
+              as List<MProduct>,
+      fetchedNoodles: null == fetchedNoodles
+          ? _value._fetchedNoodles
+          : fetchedNoodles // ignore: cast_nullable_to_non_nullable
+              as List<MProduct>,
       fetchedDrinks: null == fetchedDrinks
           ? _value._fetchedDrinks
           : fetchedDrinks // ignore: cast_nullable_to_non_nullable
-              as List<MDrink>,
-      fetchedFoods: null == fetchedFoods
-          ? _value._fetchedFoods
-          : fetchedFoods // ignore: cast_nullable_to_non_nullable
-              as List<MFood>,
+              as List<MProduct>,
+      fetchedJunkFoods: null == fetchedJunkFoods
+          ? _value._fetchedJunkFoods
+          : fetchedJunkFoods // ignore: cast_nullable_to_non_nullable
+              as List<MProduct>,
+      brands: null == brands
+          ? _value._brands
+          : brands // ignore: cast_nullable_to_non_nullable
+              as List<MBrand>,
       errorMessage: null == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String,
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -120,37 +172,75 @@ class __$$ShopStateImplCopyWithImpl<$Res>
 
 class _$ShopStateImpl implements _ShopState {
   const _$ShopStateImpl(
-      {final List<MDrink> fetchedDrinks = const <MDrink>[],
-      final List<MFood> fetchedFoods = const <MFood>[],
-      this.errorMessage = ''})
-      : _fetchedDrinks = fetchedDrinks,
-        _fetchedFoods = fetchedFoods;
+      {final List<MProduct> fetchedRices = const <MProduct>[],
+      final List<MProduct> fetchedNoodles = const <MProduct>[],
+      final List<MProduct> fetchedDrinks = const <MProduct>[],
+      final List<MProduct> fetchedJunkFoods = const <MProduct>[],
+      final List<MBrand> brands = const <MBrand>[],
+      this.errorMessage = '',
+      this.isLoading = false})
+      : _fetchedRices = fetchedRices,
+        _fetchedNoodles = fetchedNoodles,
+        _fetchedDrinks = fetchedDrinks,
+        _fetchedJunkFoods = fetchedJunkFoods,
+        _brands = brands;
 
-  final List<MDrink> _fetchedDrinks;
+  final List<MProduct> _fetchedRices;
   @override
   @JsonKey()
-  List<MDrink> get fetchedDrinks {
+  List<MProduct> get fetchedRices {
+    if (_fetchedRices is EqualUnmodifiableListView) return _fetchedRices;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_fetchedRices);
+  }
+
+  final List<MProduct> _fetchedNoodles;
+  @override
+  @JsonKey()
+  List<MProduct> get fetchedNoodles {
+    if (_fetchedNoodles is EqualUnmodifiableListView) return _fetchedNoodles;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_fetchedNoodles);
+  }
+
+  final List<MProduct> _fetchedDrinks;
+  @override
+  @JsonKey()
+  List<MProduct> get fetchedDrinks {
     if (_fetchedDrinks is EqualUnmodifiableListView) return _fetchedDrinks;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_fetchedDrinks);
   }
 
-  final List<MFood> _fetchedFoods;
+  final List<MProduct> _fetchedJunkFoods;
   @override
   @JsonKey()
-  List<MFood> get fetchedFoods {
-    if (_fetchedFoods is EqualUnmodifiableListView) return _fetchedFoods;
+  List<MProduct> get fetchedJunkFoods {
+    if (_fetchedJunkFoods is EqualUnmodifiableListView)
+      return _fetchedJunkFoods;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_fetchedFoods);
+    return EqualUnmodifiableListView(_fetchedJunkFoods);
+  }
+
+  final List<MBrand> _brands;
+  @override
+  @JsonKey()
+  List<MBrand> get brands {
+    if (_brands is EqualUnmodifiableListView) return _brands;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_brands);
   }
 
   @override
   @JsonKey()
   final String errorMessage;
+  @override
+  @JsonKey()
+  final bool isLoading;
 
   @override
   String toString() {
-    return 'ShopState(fetchedDrinks: $fetchedDrinks, fetchedFoods: $fetchedFoods, errorMessage: $errorMessage)';
+    return 'ShopState(fetchedRices: $fetchedRices, fetchedNoodles: $fetchedNoodles, fetchedDrinks: $fetchedDrinks, fetchedJunkFoods: $fetchedJunkFoods, brands: $brands, errorMessage: $errorMessage, isLoading: $isLoading)';
   }
 
   @override
@@ -159,19 +249,30 @@ class _$ShopStateImpl implements _ShopState {
         (other.runtimeType == runtimeType &&
             other is _$ShopStateImpl &&
             const DeepCollectionEquality()
+                .equals(other._fetchedRices, _fetchedRices) &&
+            const DeepCollectionEquality()
+                .equals(other._fetchedNoodles, _fetchedNoodles) &&
+            const DeepCollectionEquality()
                 .equals(other._fetchedDrinks, _fetchedDrinks) &&
             const DeepCollectionEquality()
-                .equals(other._fetchedFoods, _fetchedFoods) &&
+                .equals(other._fetchedJunkFoods, _fetchedJunkFoods) &&
+            const DeepCollectionEquality().equals(other._brands, _brands) &&
             (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage));
+                other.errorMessage == errorMessage) &&
+            (identical(other.isLoading, isLoading) ||
+                other.isLoading == isLoading));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      const DeepCollectionEquality().hash(_fetchedRices),
+      const DeepCollectionEquality().hash(_fetchedNoodles),
       const DeepCollectionEquality().hash(_fetchedDrinks),
-      const DeepCollectionEquality().hash(_fetchedFoods),
-      errorMessage);
+      const DeepCollectionEquality().hash(_fetchedJunkFoods),
+      const DeepCollectionEquality().hash(_brands),
+      errorMessage,
+      isLoading);
 
   @JsonKey(ignore: true)
   @override
@@ -182,16 +283,28 @@ class _$ShopStateImpl implements _ShopState {
 
 abstract class _ShopState implements ShopState {
   const factory _ShopState(
-      {final List<MDrink> fetchedDrinks,
-      final List<MFood> fetchedFoods,
-      final String errorMessage}) = _$ShopStateImpl;
+      {final List<MProduct> fetchedRices,
+      final List<MProduct> fetchedNoodles,
+      final List<MProduct> fetchedDrinks,
+      final List<MProduct> fetchedJunkFoods,
+      final List<MBrand> brands,
+      final String errorMessage,
+      final bool isLoading}) = _$ShopStateImpl;
 
   @override
-  List<MDrink> get fetchedDrinks;
+  List<MProduct> get fetchedRices;
   @override
-  List<MFood> get fetchedFoods;
+  List<MProduct> get fetchedNoodles;
+  @override
+  List<MProduct> get fetchedDrinks;
+  @override
+  List<MProduct> get fetchedJunkFoods;
+  @override
+  List<MBrand> get brands;
   @override
   String get errorMessage;
+  @override
+  bool get isLoading;
   @override
   @JsonKey(ignore: true)
   _$$ShopStateImplCopyWith<_$ShopStateImpl> get copyWith =>

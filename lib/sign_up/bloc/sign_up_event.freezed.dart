@@ -77,10 +77,13 @@ abstract class _SignUpInitiated implements SignUpInitiated {
 
 /// @nodoc
 mixin _$SignUpSubmitted {
-  String get account => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
+  String get email => throw _privateConstructorUsedError;
   String get password => throw _privateConstructorUsedError;
+  String get passwordConfirmation => throw _privateConstructorUsedError;
   String get address => throw _privateConstructorUsedError;
   String get phoneNumber => throw _privateConstructorUsedError;
+  BuildContext get context => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SignUpSubmittedCopyWith<SignUpSubmitted> get copyWith =>
@@ -94,7 +97,13 @@ abstract class $SignUpSubmittedCopyWith<$Res> {
       _$SignUpSubmittedCopyWithImpl<$Res, SignUpSubmitted>;
   @useResult
   $Res call(
-      {String account, String password, String address, String phoneNumber});
+      {String name,
+      String email,
+      String password,
+      String passwordConfirmation,
+      String address,
+      String phoneNumber,
+      BuildContext context});
 }
 
 /// @nodoc
@@ -110,19 +119,30 @@ class _$SignUpSubmittedCopyWithImpl<$Res, $Val extends SignUpSubmitted>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? account = null,
+    Object? name = null,
+    Object? email = null,
     Object? password = null,
+    Object? passwordConfirmation = null,
     Object? address = null,
     Object? phoneNumber = null,
+    Object? context = null,
   }) {
     return _then(_value.copyWith(
-      account: null == account
-          ? _value.account
-          : account // ignore: cast_nullable_to_non_nullable
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
               as String,
       password: null == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
+              as String,
+      passwordConfirmation: null == passwordConfirmation
+          ? _value.passwordConfirmation
+          : passwordConfirmation // ignore: cast_nullable_to_non_nullable
               as String,
       address: null == address
           ? _value.address
@@ -132,6 +152,10 @@ class _$SignUpSubmittedCopyWithImpl<$Res, $Val extends SignUpSubmitted>
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
               as String,
+      context: null == context
+          ? _value.context
+          : context // ignore: cast_nullable_to_non_nullable
+              as BuildContext,
     ) as $Val);
   }
 }
@@ -145,7 +169,13 @@ abstract class _$$SignUpSubmittedImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String account, String password, String address, String phoneNumber});
+      {String name,
+      String email,
+      String password,
+      String passwordConfirmation,
+      String address,
+      String phoneNumber,
+      BuildContext context});
 }
 
 /// @nodoc
@@ -159,19 +189,30 @@ class __$$SignUpSubmittedImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? account = null,
+    Object? name = null,
+    Object? email = null,
     Object? password = null,
+    Object? passwordConfirmation = null,
     Object? address = null,
     Object? phoneNumber = null,
+    Object? context = null,
   }) {
     return _then(_$SignUpSubmittedImpl(
-      account: null == account
-          ? _value.account
-          : account // ignore: cast_nullable_to_non_nullable
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
               as String,
       password: null == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
+              as String,
+      passwordConfirmation: null == passwordConfirmation
+          ? _value.passwordConfirmation
+          : passwordConfirmation // ignore: cast_nullable_to_non_nullable
               as String,
       address: null == address
           ? _value.address
@@ -181,6 +222,10 @@ class __$$SignUpSubmittedImplCopyWithImpl<$Res>
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
               as String,
+      context: null == context
+          ? _value.context
+          : context // ignore: cast_nullable_to_non_nullable
+              as BuildContext,
     ));
   }
 }
@@ -189,23 +234,32 @@ class __$$SignUpSubmittedImplCopyWithImpl<$Res>
 
 class _$SignUpSubmittedImpl implements _SignUpSubmitted {
   const _$SignUpSubmittedImpl(
-      {required this.account,
+      {required this.name,
+      required this.email,
       required this.password,
+      required this.passwordConfirmation,
       required this.address,
-      required this.phoneNumber});
+      required this.phoneNumber,
+      required this.context});
 
   @override
-  final String account;
+  final String name;
+  @override
+  final String email;
   @override
   final String password;
+  @override
+  final String passwordConfirmation;
   @override
   final String address;
   @override
   final String phoneNumber;
+  @override
+  final BuildContext context;
 
   @override
   String toString() {
-    return 'SignUpSubmitted(account: $account, password: $password, address: $address, phoneNumber: $phoneNumber)';
+    return 'SignUpSubmitted(name: $name, email: $email, password: $password, passwordConfirmation: $passwordConfirmation, address: $address, phoneNumber: $phoneNumber, context: $context)';
   }
 
   @override
@@ -213,17 +267,21 @@ class _$SignUpSubmittedImpl implements _SignUpSubmitted {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SignUpSubmittedImpl &&
-            (identical(other.account, account) || other.account == account) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.email, email) || other.email == email) &&
             (identical(other.password, password) ||
                 other.password == password) &&
+            (identical(other.passwordConfirmation, passwordConfirmation) ||
+                other.passwordConfirmation == passwordConfirmation) &&
             (identical(other.address, address) || other.address == address) &&
             (identical(other.phoneNumber, phoneNumber) ||
-                other.phoneNumber == phoneNumber));
+                other.phoneNumber == phoneNumber) &&
+            (identical(other.context, context) || other.context == context));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, account, password, address, phoneNumber);
+  int get hashCode => Object.hash(runtimeType, name, email, password,
+      passwordConfirmation, address, phoneNumber, context);
 
   @JsonKey(ignore: true)
   @override
@@ -235,19 +293,28 @@ class _$SignUpSubmittedImpl implements _SignUpSubmitted {
 
 abstract class _SignUpSubmitted implements SignUpSubmitted {
   const factory _SignUpSubmitted(
-      {required final String account,
+      {required final String name,
+      required final String email,
       required final String password,
+      required final String passwordConfirmation,
       required final String address,
-      required final String phoneNumber}) = _$SignUpSubmittedImpl;
+      required final String phoneNumber,
+      required final BuildContext context}) = _$SignUpSubmittedImpl;
 
   @override
-  String get account;
+  String get name;
+  @override
+  String get email;
   @override
   String get password;
+  @override
+  String get passwordConfirmation;
   @override
   String get address;
   @override
   String get phoneNumber;
+  @override
+  BuildContext get context;
   @override
   @JsonKey(ignore: true)
   _$$SignUpSubmittedImplCopyWith<_$SignUpSubmittedImpl> get copyWith =>

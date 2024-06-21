@@ -256,13 +256,23 @@ abstract class _RememberMePressed implements RememberMePressed {
 }
 
 /// @nodoc
-mixin _$LoginButtonPressed {}
+mixin _$LoginButtonPressed {
+  String get email => throw _privateConstructorUsedError;
+  String get password => throw _privateConstructorUsedError;
+  BuildContext get context => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $LoginButtonPressedCopyWith<LoginButtonPressed> get copyWith =>
+      throw _privateConstructorUsedError;
+}
 
 /// @nodoc
 abstract class $LoginButtonPressedCopyWith<$Res> {
   factory $LoginButtonPressedCopyWith(
           LoginButtonPressed value, $Res Function(LoginButtonPressed) then) =
       _$LoginButtonPressedCopyWithImpl<$Res, LoginButtonPressed>;
+  @useResult
+  $Res call({String email, String password, BuildContext context});
 }
 
 /// @nodoc
@@ -274,13 +284,40 @@ class _$LoginButtonPressedCopyWithImpl<$Res, $Val extends LoginButtonPressed>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? email = null,
+    Object? password = null,
+    Object? context = null,
+  }) {
+    return _then(_value.copyWith(
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      password: null == password
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String,
+      context: null == context
+          ? _value.context
+          : context // ignore: cast_nullable_to_non_nullable
+              as BuildContext,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$LoginButtonPressedImplCopyWith<$Res> {
+abstract class _$$LoginButtonPressedImplCopyWith<$Res>
+    implements $LoginButtonPressedCopyWith<$Res> {
   factory _$$LoginButtonPressedImplCopyWith(_$LoginButtonPressedImpl value,
           $Res Function(_$LoginButtonPressedImpl) then) =
       __$$LoginButtonPressedImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String email, String password, BuildContext context});
 }
 
 /// @nodoc
@@ -290,99 +327,87 @@ class __$$LoginButtonPressedImplCopyWithImpl<$Res>
   __$$LoginButtonPressedImplCopyWithImpl(_$LoginButtonPressedImpl _value,
       $Res Function(_$LoginButtonPressedImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? email = null,
+    Object? password = null,
+    Object? context = null,
+  }) {
+    return _then(_$LoginButtonPressedImpl(
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      password: null == password
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String,
+      context: null == context
+          ? _value.context
+          : context // ignore: cast_nullable_to_non_nullable
+              as BuildContext,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$LoginButtonPressedImpl implements _LoginButtonPressed {
-  const _$LoginButtonPressedImpl();
+  const _$LoginButtonPressedImpl(
+      {required this.email, required this.password, required this.context});
+
+  @override
+  final String email;
+  @override
+  final String password;
+  @override
+  final BuildContext context;
 
   @override
   String toString() {
-    return 'LoginButtonPressed()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$LoginButtonPressedImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-}
-
-abstract class _LoginButtonPressed implements LoginButtonPressed {
-  const factory _LoginButtonPressed() = _$LoginButtonPressedImpl;
-}
-
-/// @nodoc
-mixin _$CreateAccountButtonPressed {}
-
-/// @nodoc
-abstract class $CreateAccountButtonPressedCopyWith<$Res> {
-  factory $CreateAccountButtonPressedCopyWith(CreateAccountButtonPressed value,
-          $Res Function(CreateAccountButtonPressed) then) =
-      _$CreateAccountButtonPressedCopyWithImpl<$Res,
-          CreateAccountButtonPressed>;
-}
-
-/// @nodoc
-class _$CreateAccountButtonPressedCopyWithImpl<$Res,
-        $Val extends CreateAccountButtonPressed>
-    implements $CreateAccountButtonPressedCopyWith<$Res> {
-  _$CreateAccountButtonPressedCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-}
-
-/// @nodoc
-abstract class _$$CreateAccountButtonPressedImplCopyWith<$Res> {
-  factory _$$CreateAccountButtonPressedImplCopyWith(
-          _$CreateAccountButtonPressedImpl value,
-          $Res Function(_$CreateAccountButtonPressedImpl) then) =
-      __$$CreateAccountButtonPressedImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$CreateAccountButtonPressedImplCopyWithImpl<$Res>
-    extends _$CreateAccountButtonPressedCopyWithImpl<$Res,
-        _$CreateAccountButtonPressedImpl>
-    implements _$$CreateAccountButtonPressedImplCopyWith<$Res> {
-  __$$CreateAccountButtonPressedImplCopyWithImpl(
-      _$CreateAccountButtonPressedImpl _value,
-      $Res Function(_$CreateAccountButtonPressedImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$CreateAccountButtonPressedImpl implements _CreateAccountButtonPressed {
-  const _$CreateAccountButtonPressedImpl();
-
-  @override
-  String toString() {
-    return 'CreateAccountButtonPressed()';
+    return 'LoginButtonPressed(email: $email, password: $password, context: $context)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$CreateAccountButtonPressedImpl);
+            other is _$LoginButtonPressedImpl &&
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.password, password) ||
+                other.password == password) &&
+            (identical(other.context, context) || other.context == context));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, email, password, context);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LoginButtonPressedImplCopyWith<_$LoginButtonPressedImpl> get copyWith =>
+      __$$LoginButtonPressedImplCopyWithImpl<_$LoginButtonPressedImpl>(
+          this, _$identity);
 }
 
-abstract class _CreateAccountButtonPressed
-    implements CreateAccountButtonPressed {
-  const factory _CreateAccountButtonPressed() =
-      _$CreateAccountButtonPressedImpl;
+abstract class _LoginButtonPressed implements LoginButtonPressed {
+  const factory _LoginButtonPressed(
+      {required final String email,
+      required final String password,
+      required final BuildContext context}) = _$LoginButtonPressedImpl;
+
+  @override
+  String get email;
+  @override
+  String get password;
+  @override
+  BuildContext get context;
+  @override
+  @JsonKey(ignore: true)
+  _$$LoginButtonPressedImplCopyWith<_$LoginButtonPressedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -454,136 +479,4 @@ abstract class _ForgotPasswordButtonPressed
     implements ForgotPasswordButtonPressed {
   const factory _ForgotPasswordButtonPressed() =
       _$ForgotPasswordButtonPressedImpl;
-}
-
-/// @nodoc
-mixin _$SignInWithGooglePressed {}
-
-/// @nodoc
-abstract class $SignInWithGooglePressedCopyWith<$Res> {
-  factory $SignInWithGooglePressedCopyWith(SignInWithGooglePressed value,
-          $Res Function(SignInWithGooglePressed) then) =
-      _$SignInWithGooglePressedCopyWithImpl<$Res, SignInWithGooglePressed>;
-}
-
-/// @nodoc
-class _$SignInWithGooglePressedCopyWithImpl<$Res,
-        $Val extends SignInWithGooglePressed>
-    implements $SignInWithGooglePressedCopyWith<$Res> {
-  _$SignInWithGooglePressedCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-}
-
-/// @nodoc
-abstract class _$$SignInWithGooglePressedImplCopyWith<$Res> {
-  factory _$$SignInWithGooglePressedImplCopyWith(
-          _$SignInWithGooglePressedImpl value,
-          $Res Function(_$SignInWithGooglePressedImpl) then) =
-      __$$SignInWithGooglePressedImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$SignInWithGooglePressedImplCopyWithImpl<$Res>
-    extends _$SignInWithGooglePressedCopyWithImpl<$Res,
-        _$SignInWithGooglePressedImpl>
-    implements _$$SignInWithGooglePressedImplCopyWith<$Res> {
-  __$$SignInWithGooglePressedImplCopyWithImpl(
-      _$SignInWithGooglePressedImpl _value,
-      $Res Function(_$SignInWithGooglePressedImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$SignInWithGooglePressedImpl implements _SignInWithGooglePressed {
-  const _$SignInWithGooglePressedImpl();
-
-  @override
-  String toString() {
-    return 'SignInWithGooglePressed()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$SignInWithGooglePressedImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-}
-
-abstract class _SignInWithGooglePressed implements SignInWithGooglePressed {
-  const factory _SignInWithGooglePressed() = _$SignInWithGooglePressedImpl;
-}
-
-/// @nodoc
-mixin _$SignInWithFacebookPressed {}
-
-/// @nodoc
-abstract class $SignInWithFacebookPressedCopyWith<$Res> {
-  factory $SignInWithFacebookPressedCopyWith(SignInWithFacebookPressed value,
-          $Res Function(SignInWithFacebookPressed) then) =
-      _$SignInWithFacebookPressedCopyWithImpl<$Res, SignInWithFacebookPressed>;
-}
-
-/// @nodoc
-class _$SignInWithFacebookPressedCopyWithImpl<$Res,
-        $Val extends SignInWithFacebookPressed>
-    implements $SignInWithFacebookPressedCopyWith<$Res> {
-  _$SignInWithFacebookPressedCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-}
-
-/// @nodoc
-abstract class _$$SignInWithFacebookPressedImplCopyWith<$Res> {
-  factory _$$SignInWithFacebookPressedImplCopyWith(
-          _$SignInWithFacebookPressedImpl value,
-          $Res Function(_$SignInWithFacebookPressedImpl) then) =
-      __$$SignInWithFacebookPressedImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$SignInWithFacebookPressedImplCopyWithImpl<$Res>
-    extends _$SignInWithFacebookPressedCopyWithImpl<$Res,
-        _$SignInWithFacebookPressedImpl>
-    implements _$$SignInWithFacebookPressedImplCopyWith<$Res> {
-  __$$SignInWithFacebookPressedImplCopyWithImpl(
-      _$SignInWithFacebookPressedImpl _value,
-      $Res Function(_$SignInWithFacebookPressedImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$SignInWithFacebookPressedImpl implements _SignInWithFacebookPressed {
-  const _$SignInWithFacebookPressedImpl();
-
-  @override
-  String toString() {
-    return 'SignInWithFacebookPressed()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$SignInWithFacebookPressedImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-}
-
-abstract class _SignInWithFacebookPressed implements SignInWithFacebookPressed {
-  const factory _SignInWithFacebookPressed() = _$SignInWithFacebookPressedImpl;
 }
